@@ -1,0 +1,41 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "requests": [
+        "xin chào",
+        "chào bạn",
+        "hello",
+        "hi"
+      ],
+      "responses": [
+        "Chào bạn, mình có thể giúp gì cho bạn?",
+        "Xin chào! Bạn muốn tìm hiểu gì về tuyển sinh CNTT?"
+      ]
+    },
+    {
+      "tag": "hocphi",
+      "requests": [
+        "học phí ngành công nghệ thông tin",
+        "học phí bao nhiêu",
+        "chi phí học tập",
+        "tiền học cntt là bao nhiêu"
+      ],
+      "responses": [
+        "Học phí ngành CNTT khoảng 20–25 triệu đồng/năm (tùy chương trình)."
+      ]
+    },
+    {
+      "tag": "chuyennganh",
+      "requests": [
+        "công nghệ thông tin có chuyên ngành nào",
+        "các ngành học trong cntt",
+        "chuyên ngành của ngành công nghệ thông tin",
+        "ngành cntt có mấy chuyên ngành"
+      ],
+      "responses": [
+        "CNTT có các chuyên ngành: Kỹ thuật phần mềm, Hệ thống thông tin, An toàn thông tin, Mạng máy tính."
+      ]
+    }
+  ]
+}
