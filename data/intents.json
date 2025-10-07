@@ -2,7 +2,7 @@
     "intents": [
         {
             "tag": "bang_cap_CNTT",
-            "patterns": [
+            "requests": [
                 "Bằng CNTT của PTIT có được công nhận rộng rãi không?",
                 "Học CNTT ở PTIT ra trường bằng cấp có giá trị như thế nào?",
                 "Bằng CNTT PTIT có uy tín trên thị trường lao động không?",
@@ -30,7 +30,7 @@
         },
         {
             "tag": "cau_hoi_ngoai_le",
-            "patterns": [
+            "requests": [
                 " jhdfhfdghfhd ",
                 "ghd fcvb vb vbncv ",
                 "vbncvbcn",
@@ -128,7 +128,7 @@
         },
         {
             "tag": "cau_lac_bo",
-            "patterns": [
+            "requests": [
                 "PTIT có những câu lạc bộ nào?",
                 "Liệt kê các CLB ở PTIT",
                 "Trường có bao nhiêu câu lạc bộ?",
@@ -186,7 +186,7 @@
         },
         {
             "tag": "chat_luong_dao_tao",
-            "patterns": [
+            "requests": [
                 "Chất lượng đào tạo tại khoa Công nghệ Thông tin PTIT có gì khác so với các trường khác?",
                 "Chất lượng đào tạo khoa CNTT PTIT như thế nào?",
                 "Khoa CNTT Học viện Công nghệ Bưu chính Viễn thông đào tạo ra sao?",
@@ -245,7 +245,7 @@
         },
         {
             "tag": "chi_tieu",
-            "patterns": [
+            "requests": [
                 "Chỉ tiêu xét tuyển ngành công nghệ thông tin PTIT là bao nhiêu",
                 "Ngành công nghệ thông tin PTIT có chỉ tiêu xét tuyển là",
                 "Chỉ tiêu xét tuyển ngành công nghệ thông tin PTIT",
@@ -290,7 +290,7 @@
         },
         {
             "tag": "chuyen_nganh",
-            "patterns": [
+            "requests": [
                 "Công nghệ thông tin có những chuyên ngành nào?",
                 "Cho mình biết chuyên ngành trong CNTT?",
                 "Ngành CNTT được chia thành mấy chuyên ngành?",
@@ -337,7 +337,7 @@
         },
         {
             "tag": "co_so_vat_chat",
-            "patterns": [
+            "requests": [
                 "Cơ sở vật chất của ngành CNTT ở PTIT như thế nào?",
                 "Trường PTIT có phòng máy tính hiện đại không?",
                 "Hệ thống phòng máy ở PTIT có đủ cho sinh viên CNTT không?",
@@ -395,7 +395,7 @@
         },
         {
             "tag": "cong_viec",
-            "patterns": [
+            "requests": [
                 "Học ngành công nghệ thông tin ra trường làm gì?",
                 "Sau khi học CNTT tại PTIT tôi có thể làm những công việc gì?",
                 "Các công việc sau khi tốt nghiệp CNTT tại PTIT là gì?",
@@ -445,7 +445,7 @@
         },
         {
             "tag": "dang_ky_xet_tuyen",
-            "patterns": [
+            "requests": [
                 "Cách thức đăng ký xét tuyển vào PTIT như thế nào?",
                 "Đăng ký xét tuyển vào PTIT có cần đến trực tiếp trường không?",
                 "PTIT có nhận hồ sơ xét tuyển qua bưu điện không?",
@@ -493,7 +493,7 @@
         },
         {
             "tag": "dia_chi",
-            "patterns": [
+            "requests": [
                 "Địa chỉ PTIT ở đâu?",
                 "Trường PTIT ở chỗ nào?",
                 "PTIT có mấy cơ sở?",
@@ -542,7 +542,7 @@
         },
         {
             "tag": "diem_cong",
-            "patterns": [
+            "requests": [
                 "PTIT cộng tối đa bao nhiêu điểm khi xét tuyển?",
                 "Điểm cộng tối đa ở PTIT là bao nhiêu?",
                 "PTIT cho điểm cộng cao nhất là bao nhiêu?",
@@ -590,7 +590,7 @@
         },
         {
             "tag": "diem_uu_tien",
-            "patterns": [
+            "requests": [
                 "Chính sách ưu tiên đối tượng trong tuyển sinh PTIT là gì?",
                 "Nhóm đối tượng UT1 bao gồm những ai?",
                 "Nhóm UT2 gồm các đối tượng nào?",
@@ -638,7 +638,7 @@
         },
         {
             "tag": "ho_so_dang_ky",
-            "patterns": [
+            "requests": [
                 "Hồ sơ đăng ký xét tuyển vào PTIT gồm những gì?",
                 "Hồ sơ đăng ký xét tuyển PTIT có bắt buộc phải nộp học bạ bản gốc không?",
                 "Khi làm hồ sơ xét tuyển PTIT có cần giấy chứng nhận tốt nghiệp tạm thời không?",
@@ -686,7 +686,7 @@
         },
         {
             "tag": "hoc_bong",
-            "patterns": [
+            "requests": [
                 "Ngành CNTT ở PTIT có học bổng không?",
                 "PTIT có cấp học bổng cho sinh viên không?",
                 "Học CNTT ở PTIT có được nhận học bổng không?",
@@ -732,7 +732,7 @@
         },
         {
             "tag": "hoc_gi",
-            "patterns": [
+            "requests": [
                 "Ngành công nghệ thông tin sinh viên được học những gì ?",
                 "Sinh viên được học những gì trong ngành công nghệ thông tin ?",
                 "Ngành công nghệ thông tin được học những gì ?",
@@ -773,7 +773,7 @@
         },
         {
             "tag": "hoc_phi",
-            "patterns": [
+            "requests": [
                 "Sinh viên CNTT phải đóng học phí bao nhiêu một năm?",
                 "Học CNTT ở PTIT hết bao nhiêu tiền một năm?",
                 "Học phí CNTT tại PTIT có đắt không?",
@@ -820,7 +820,7 @@
         },
         {
             "tag": "hoc_quan_su",
-            "patterns": [
+            "requests": [
                 "Năm nhất PTIT đi quân sự ở đâu",
                 "Học đại học có phải đi quân sự không",
                 "Sinh viên PTIT năm nhất đi quân sự",
@@ -869,7 +869,7 @@
         },
         {
             "tag": "ki_tuc_xa",
-            "patterns": [
+            "requests": [
                 "Trường PTIT có ký túc xá cho sinh viên không?",
                 "PTIT có bao nhiêu ký túc xá dành cho sinh viên?",
                 "Sinh viên học CNTT ở PTIT có được ở ký túc xá không?",
@@ -917,7 +917,7 @@
         },
         {
             "tag": "muc_luong",
-            "patterns": [
+            "requests": [
                 "Sinh viên CNTT PTIT mới tốt nghiệp lương khoảng bao nhiêu?",
                 "Ra trường CNTT PTIT thì thu nhập ban đầu khoảng bao nhiêu một tháng?",
                 "Mức lương trung bình của sinh viên CNTT PTIT ra trường là bao nhiêu?",
@@ -965,7 +965,7 @@
         },
         {
             "tag": "nang_luc",
-            "patterns": [
+            "requests": [
                 "Học lực khá có thể đỗ CNTT ở PTIT không?",
                 "Học lực trung bình có đủ khả năng theo ngành CNTT ở PTIT không?",
                 "Thi khối A điểm không cao có thể đỗ ngành CNTT PTIT không?",
@@ -1009,7 +1009,7 @@
         },
         {
             "tag": "ngoai_ngu",
-            "patterns": [
+            "requests": [
                 "ngành CNTT ở PTIT có học ngoại ngữ không?",
                 "PTIT có trung tâm ngoại ngữ riêng cho sinh viên CNTT không?",
                 "Sinh viên CNTT PTIT có được học các khóa ngoại ngữ tự chọn không?",
@@ -1057,7 +1057,7 @@
         },
         {
             "tag": "phuong_thuc",
-            "patterns": [
+            "requests": [
                 "Trường có những phương thức xét tuyển nào?",
                 "Các cách để được trúng tuyển vào ngành CNTT của trường là gì?",
                 "Các hình thức tuyển sinh của trường là gì?",
@@ -1105,13 +1105,13 @@
         },
         {
             "tag": "tam_biet",
-            "patterns": [
+            "requests": [
                 "Tạm biệt bot",
                 "Goodbye",
                 "Tạm biệt mày nhé bot",
                 "Chào tạm biệt",
                 "Ngày mai gặp lại nhé bot!",
-                "Adios",
+                "baiiiiiiiiiiiiii",
                 "tạm biệt, tạm biệt, tạm biệt",
                 "see you again",
                 "Tạm biệt mày nhé",
@@ -1141,7 +1141,7 @@
         },
         {
             "tag": "thoi_gian_nop_ho_so",
-            "patterns": [
+            "requests": [
                 "Khi nào trường bắt đầu nhận hồ sơ?",
                 "Hạn cuối cùng để nộp hồ sơ đăng ký là khi nào?",
                 "Thời hạn nộp hồ sơ là bao lâu?",
@@ -1189,7 +1189,7 @@
         },
         {
             "tag": "thuc_tap",
-            "patterns": [
+            "requests": [
                 "Sinh viên ngành CNTT ở PTIT có đi thực tập tại doanh nghiệp không?",
                 "PTIT có cho sinh viên CNTT thực tập ở công ty không?",
                 "Ngành CNTT tại PTIT có bắt buộc thực tập doanh nghiệp không?",
@@ -1236,7 +1236,7 @@
         },
         {
             "tag": "tieu_chi_phu",
-            "patterns": [
+            "requests": [
                 "PTIT có sử dụng tiêu chí phụ riêng để xét tuyển không",
                 "PTIT có tiêu chí phụ khi xét tuyển không?",
                 "Học viện PTIT có dùng tiêu chí phụ để xét tuyển không?",
@@ -1285,7 +1285,7 @@
         },
         {
             "tag": "tin_chi",
-            "patterns": [
+            "requests": [
                 "Chương trình đào tạo ngành CNTT ở PTIT có bao nhiêu tín chỉ?",
                 "Tổng số tín chỉ của ngành CNTT PTIT là bao nhiêu?",
                 "Chương trình CNTT ở PTIT yêu cầu hoàn thành bao nhiêu tín chỉ tất cả?",
@@ -1331,7 +1331,7 @@
         },
         {
             "tag": "to_hop",
-            "patterns": [
+            "requests": [
                 "Tổ hợp xét tuyển ngành Công nghệ thông tin là gì ?",
                 "Ngành công nghệ thông tin tổ hợp xét tuyển là gì",
                 "Ngành công nghệ thông tin xét tuyển những tổ hợp nào ?",
@@ -1392,7 +1392,7 @@
         },
         {
             "tag": "trao_doi_sinh_vien",
-            "patterns": [
+            "requests": [
                 "PTIT có chương trình trao đổi sinh viên không?",
                 "Sinh viên CNTT ở PTIT có được tham gia chương trình trao đổi sinh viên không?",
                 "Trường PTIT có cho sinh viên đi trao đổi quốc tế không?",
@@ -1440,7 +1440,7 @@
         },
         {
             "tag": "website",
-            "patterns": [
+            "requests": [
                 "Website khoa Công nghệ Thông tin PTIT là gì?",
                 "Khoa Công nghệ Thông tin PTIT website là gì?",
                 "PTIT  có website không?",
@@ -1473,7 +1473,7 @@
         },
         {
             "tag": "xet_ACT/SAT",
-            "patterns": [
+            "requests": [
                 "PTIT có xét tuyển bằng chứng chỉ SAT không?",
                 "PTIT có nhận chứng chỉ ACT để xét tuyển không?",
                 "Điều kiện để dùng chứng chỉ SAT xét tuyển vào PTIT là gì?",
@@ -1521,7 +1521,7 @@
         },
         {
             "tag": "xet_DGNL_HN/HCM",
-            "patterns": [
+            "requests": [
                 "PTIT có xét tuyển bằng điểm đánh giá năng lực không?",
                 "Học viện Công nghệ Bưu chính Viễn thông có tuyển sinh theo điểm ĐGNL không?",
                 "PTIT có nhận kết quả thi Đánh giá năng lực của ĐHQG không?",
@@ -1569,7 +1569,7 @@
         },
         {
             "tag": "xet_DGNL_HNUE",
-            "patterns": [
+            "requests": [
                 "Điều kiện để xét tuyển vào PTIT bằng điểm ĐGNL Sư phạm Hà Nội là gì?",
                 "PTIT yêu cầu thí sinh đạt tối thiểu bao nhiêu điểm ĐGNL Sư phạm Hà Nội để được xét tuyển?",
                 "Muốn dùng điểm ĐGNL Sư phạm Hà Nội để xét vào PTIT cần điều kiện gì?",
@@ -1617,7 +1617,7 @@
         },
         {
             "tag": "xet_diem_thpt",
-            "patterns": [
+            "requests": [
                 "PTIT có xét tuyển bằng điểm thi tốt nghiệp THPT không?",
                 "Học viện PTIT năm 2025 có tuyển sinh bằng điểm thi THPT không?",
                 "PTIT có phương thức xét tuyển bằng điểm thi THPT không?",
@@ -1665,7 +1665,7 @@
         },
         {
             "tag": "xet_hoc_ba_va_ccTA",
-            "patterns": [
+            "requests": [
                 "PTIT có xét tuyển bằng học bạ không?",
                 "Học viện PTIT năm 2025 có tuyển sinh bằng học bạ không?",
                 "Muốn vào PTIT bằng học bạ thì cần điều kiện gì?",
@@ -1713,7 +1713,7 @@
         },
         {
             "tag": "xet_tuyen_tai_nang",
-            "patterns": [
+            "requests": [
                 "PTIT có xét tuyển tài năng không?",
                 "Xét tuyển tài năng ở PTIT là gì?",
                 "Ai đủ điều kiện để xét tuyển tài năng vào PTIT?",
@@ -1761,7 +1761,7 @@
         },
         {
             "tag": "xet_ĐGTD",
-            "patterns": [
+            "requests": [
                 "PTIT có tuyển sinh bằng điểm Đánh giá tư duy không?",
                 "Năm 2025 PTIT có sử dụng kết quả kỳ thi ĐGTD để xét tuyển không?",
                 "Xét tuyển bằng điểm ĐGTD là gì?",
@@ -1809,7 +1809,7 @@
         },
         {
             "tag": "xin_chao",
-            "patterns": [
+            "requests": [
                 "Xin chào bot, mình là Quân hiện tại mình đang cần bot tư vấn tuyển sinh",
                 "Chào mày, tao là học sinh tao muốn mày tư vấn",
                 "Mày chào tao chưa bot?",

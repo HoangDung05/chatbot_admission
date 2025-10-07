@@ -67,5 +67,5 @@ def train_full():
 
 if __name__ == "__main__":
     # Bạn có thể chọn chạy test_accuracy hoặc train_full
-    test_accuracy()
-    # train_full()
+    # test_accuracy()
+    train_full()
