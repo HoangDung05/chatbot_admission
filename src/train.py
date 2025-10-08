@@ -16,7 +16,7 @@ for intent in intents["intents"]:
         labels.append(intent["tag"])
 
 # TF-IDF
-vectorizer = TfidfVectorizer()
+vectorizer = TfidfVectorizer(tokenizer=str.split)
 X = vectorizer.fit_transform(texts)
 
 # Train model
