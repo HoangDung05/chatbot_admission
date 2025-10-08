@@ -62,7 +62,7 @@ def train_full():
     with open("../models/classifier.pkl", "wb") as f:
         pickle.dump(model, f)
 
-    print("✅ Đã train full dữ liệu và lưu model thành công.")
+    print("Đã train full dữ liệu và lưu model thành công.")
 
 
 if __name__ == "__main__":
