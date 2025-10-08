@@ -29,7 +29,7 @@ def excel_to_json(excel_file, json_file):
     with open(json_file, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-    print(f"✅ Đã tạo file JSON: {json_file}")
+    print(f"Đã tạo file JSON: {json_file}")
 
 
 if __name__ == "__main__":
