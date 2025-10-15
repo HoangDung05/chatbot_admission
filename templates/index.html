@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Tuyển Sinh</title>
+    <!-- Liên kết đến file CSS bằng url_for của Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Chatbot Tư vấn Tuyển sinh</h2>
+        </div>
+        <div class="chat-window" id="chat-window">
+            <!-- Tin nhắn chào mừng từ Bot -->
+            <div class="message bot-message">
+                <p>Chào bạn! Tôi có thể giúp gì trong việc tư vấn tuyển sinh hôm nay?</p>
+            </div>
+        </div>
+        <form class="chat-input-form" id="chat-form">
+            <input type="text" id="message-input" placeholder="Nhập câu hỏi của bạn..." autocomplete="off" required>
+            <button type="submit">Gửi</button>
+        </form>
+    </div>
+
+    <!-- Liên kết đến file JavaScript bằng url_for của Flask -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
