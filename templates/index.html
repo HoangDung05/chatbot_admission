@@ -1,31 +1,89 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Tuyển Sinh</title>
-    <!-- Liên kết đến file CSS bằng url_for của Flask -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>Chatbot Tư vấn Tuyển sinh</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuyển sinh PTIT 2025</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" >
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <a href="#" class="logo">
+          <img
+            src="{{ url_for('static', filename='images/congthongtintuyensinh_logo.png') }}"
+            alt="Logo PTIT"
+          />
+        </a>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="https://tuyensinh.ptit.edu.vn/">Trang chủ</a></li>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Thông báo</a></li>
+            <li><a href="#">Tin tức</a></li>
+            <li><a href="#">Đề án tuyển sinh</a></li>
+            <li><a href="#">Tra cứu tuyển sinh</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="btn btn-primary">Nộp hồ sơ trực tuyến</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="container text-center">
+          <p class="subtitle">
+            TUYỂN SINH HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG
+          </p>
+          <h1 class="main-title">ĐĂNG KÝ XÉT TUYỂN TRỰC TUYẾN</h1>
+          <p class="description">
+            Nộp hồ sơ trực tuyến để không bỏ lỡ bất kỳ cơ hội nào trở thành sinh
+            viên của PTIT
+          </p>
+          <div class="action-buttons">
+            <a href="#" class="btn btn-secondary"
+              >Cẩm nang Tuyển sinh đại học 2025 →</a
+            >
+            <a href="#" class="btn btn-secondary">Hướng dẫn ĐKXT →</a>
+            <a href="#" class="btn btn-secondary">Nộp hồ sơ trực tuyến →</a>
+          </div>
         </div>
-        <div class="chat-window" id="chat-window">
-            <!-- Tin nhắn chào mừng từ Bot -->
-            <div class="message bot-message">
-                <p>Chào bạn! Tôi có thể giúp gì trong việc tư vấn tuyển sinh hôm nay?</p>
-            </div>
-        </div>
-        <form class="chat-input-form" id="chat-form">
-            <input type="text" id="message-input" placeholder="Nhập câu hỏi của bạn..." autocomplete="off" required>
-            <button type="submit">Gửi</button>
-        </form>
+      </section>
+
+      <div class="image-info">
+        <img
+          src="{{ url_for('static', filename='images/image_central.jpg') }}"
+        />
+      </div>
+    </main>
+
+    <div id="chat-icon">
+      <img src="{{ url_for('static', filename='images/logo_chatbot.png') }}" />
     </div>
 
-    <!-- Liên kết đến file JavaScript bằng url_for của Flask -->
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+    <div id="chat-popup" class="hidden">
+      <div class="chat-header">
+        <h3>Trợ lý ảo PTIT</h3>
+        <button id="close-chat-btn">&times;</button>
+      </div>
+      <div id="chat-body" class="chat-body">
+        <div class="bot-message">
+          <p>
+            Chào bạn! Tôi có thể giúp gì cho bạn về thông tin tuyển sinh 2025?
+          </p>
+        </div>
+      </div>
+      <div class="chat-footer">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Nhập câu hỏi của bạn..."
+        />
+        <button id="send-chat-btn"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
 
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
