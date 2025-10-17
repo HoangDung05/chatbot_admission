@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messageElement.classList.add('message', `${sender}-message`);
 
         const p = document.createElement('p');
-        p.textContent = text;
+        p.innerHTML = text;
         messageElement.appendChild(p);
 
         chatWindow.appendChild(messageElement);
