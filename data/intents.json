@@ -3,20 +3,62 @@
     "cong_nghe_thong_tin": {
       "full_name": "Công nghệ Thông tin",
       "knowledge": {
+        
         "chi_tieu": {
           "hn": "Cơ sở Hà Nội: Chỉ tiêu dự kiến ngành CNTT năm 2025 là 600 sinh viên.",
+          
           "tphcm": "Cơ sở TP.HCM: Chỉ tiêu dự kiến ngành CNTT năm 2025 là 230 sinh viên."
         },
-        "hoc_phi": {
-          "hn": "Cơ sở Hà Nội: Học phí ngành CNTT là 1.020.000 đồng/tín chỉ",
-          "tphcm": "Cơ sở TP.HCM: Mức học phí tương tự như cơ sở Hà Nội, dao động từ 29,6 đến 37,6 triệu đồng/năm."
-        },
+        
+        "hoc_phi": "Học phí ngành CNTT  là 1.020.000 đồng/tín chỉ với hệ đào tạo đại trà và 1.470.000 đồng/tín chỉ đối với hệ đào tạo clc",        
         "to_hop_mon": "Ngành Công nghệ thông tin xét tuyển các tổ hợp A00 (Toán, Lý, Hóa) và A01 (Toán, Lý, Anh) cho cả hai cơ sở.",
-        "chuyen_nganh_sau": {
-          "hn": "Tại Hà Nội, sinh viên có thể lựa chọn các chuyên ngành sâu như:\n- Kỹ thuật phần mềm\n- Hệ thống thông tin\n- Mạng máy tính và truyền thông dữ liệu",
-          "tphcm": "Tại TP.HCM, các chuyên ngành sâu tập trung vào:\n- Công nghệ phần mềm\n- Trí tuệ nhân tạo ứng dụng"
+        
+        "chuyen_nganh_sau": "ở cả 2 cơ sở ,sinh viên sau khi nhập học và học một số học phần cơ sở sẽ đăng ký chọn chuyên ngành, bao gồm: Mạng máy tính và Truyền thông dữ liệu,Công nghệ phần mềm, Hệ thống thông tin với hệ đại trà và Công nghệ phần mềm Trí tuệ nhân tạo (AI), Hệ thống thông tin với hệ chất lượng cao",
+        
+        "co_hoi_viec_lam": "Sinh viên ngành Công nghệ thông tin của Học viện Công nghệ Bưu chính Viễn thông (PTIT) ở cả 2 cơ sở sau khi tốt nghiệp có thể làm việc ở nhiều vị trí đa dạng như lập trình viên, chuyên viên mạng, chuyên viên an ninh mạng, quản lý dự án, hay các vị trí trong lĩnh vực Trí tuệ nhân tạo (AI) và Internet vạn vật (IoT). Cơ hội nghề nghiệp rộng mở tại các công ty công nghệ, tập đoàn lớn tùy theo năng lực cá nhân",
+        
+        "thoi_gian_nop_ho_so": "Thời gian nộp hồ sơ xét tuyển đại học chính quy ngành Công nghệ thông tin PTIT năm 2025 là từ ngày 09/06/2025 đến hết ngày 10/07/2025 cho việc đăng ký thông tin xét tuyển trực tuyến ở cả cơ sở Hà Nội và TP HCM.",
+        
+        "kien_thuc": "Sinh viên ngành CNTT tại PTIT sẽ được học từ cơ bản đến chuyên sâu.\nChương trình bao gồm:kiến thức nền tảng về toán, xác suất thống kê, cấu trúc dữ liệu & giải thuật, kiến trúc máy tính, hệ điều hành, mạng máy tính, cơ sở dữ liệu.\nSau đó sinh viên học các môn chuyên ngành như trí tuệ nhân tạo, an toàn thông tin, công nghệ web,..cho cả 2 cơ sở",
+        
+        
+        "muc_luong": "Mức lương trung bình của sinh viên PTIT mới ra trường tại Hà Nội và TP.HCM thường dao động trong khoảng 5-10 triệu đồng/tháng, với gần 30% có mức lương trên 10 triệu đồng/tháng và một bộ phận nhỏ sinh viên xuất sắc có thể đạt mức trên 15 triệu đồng/tháng.Tùy theo vị trí và công ty nơi sinh viên làm việc, mức lương sẽ thay đổi đáng kể theo thời gian. ",
+        
+        "hoc_bong":"PTIT có các loại học bổng đa dạng cho cả hai cơ sở HN và TP.HCM, bao gồm:\n-Học bổng tuyển sinh dành cho thí sinh có thành tích cao (từ 100 triệu đến 500 triệu đồng),\n-học bổng khuyến khích học tập hàng kỳ cho sinh viên có kết quả học tập, rèn luyện tốt ( lần lượt là 100%, 110%, 120% học phí).\n-Ngoài ra, sinh viên còn có cơ hội nhận học bổng từ các doanh nghiệp tài trợ, như Samsung, VNPT, FPT, v.v. ",
+        
+        "tin_chi":"Để tốt nghiệp ngành Công nghệ thông tin tại Học viện Công nghệ Bưu chính Viễn thông (PTIT)của cả 2 cơ sở, sinh viên cần tích lũy 152 tín chỉ, không bao gồm Giáo dục thể chất, Giáo dục quốc phòng và Kỹ năng mềm.",
+        
+        
+        "thuc_tap":{
+          "hn":" tại Hà Nội, học viện sẽ tạo cơ hội giúp sinh viên đi thực tập tại các doanh nghiệp, tập đoàn Viễn thông và quốc phòng/công nghệ có liên kết sâu rộng , thông qua các học phần thực tập tốt nghiệp bắt buộc hoặc các chương trình liên kết doanh nghiệp.",
+          
+          "tphcm":"tại tp.HCM, học viện sẽ tạo cơ hội giúp sinh viên tìm kiếm cơ hội thực tập tại các công ty Outsourcing và Công nghệ phía Nam (ví dụ: TMA Solutions, CMC Sài Gòn,...) mà học viện hợp tác chặt chẽ"
         },
-        "co_hoi_viec_lam": "Sinh viên tốt nghiệp ngành Công nghệ thông tin có cơ hội việc làm rất rộng mở tại các công ty công nghệ, tập đoàn lớn ở cả Hà Nội và TP.HCM, với các vị trí như lập trình viên, kỹ sư phần mềm, chuyên viên phân tích dữ liệu..."
+        
+        "ngoai_ngu":"Sau khi nhập học, sinh viên PTIT ở cả hai cơ sở sẽ được tổ chức kiểm tra trình độ tiếng Anh đầu vào để kiểm tra chất lượng,\n Với chuẩn đầu ra, sinh viên cần đạt TOEIC 450 điểm quốc tế trở lên hoặc chứng chỉ quốc tế tương đương đề có thể ra trường",
+        
+        "ho_so_dang_ky":"Hồ sơ đăng ký xét tuyển vào Học viện Công nghệ Bưu chính Viễn thông cả 2 cơ sở bao gồm Phiếu đăng ký tuyển sinh, Bản sao hợp lệ Bằng tốt nghiệp THPT (hoặc Giấy chứng nhận tốt nghiệp tạm thời), Bản sao hợp lệ Học bạ THPT, Bản sao hợp lệ Giấy khai sinh, Ảnh thẻ 3x4, và các giấy tờ minh chứng khác tùy theo phương thức xét tuyển, ví dụ như bản chụp Căn cước công dân, giấy tờ ưu tiên...",
+        
+        "dia_chi":{
+          "hn":"-Hà Nội:\n+ Trụ sở chính: 122, Hoàng Quốc Việt, Cầu Giấy, Hà Nội,\n+ Cơ sở đào tạo chính : Km10, Đường Nguyễn Trãi, Hà Đông, Hà Nội,\n+ Cơ sở đào tạo Ngọc Trục – Hà Nội : Số 33, đường Đại Mỗ, phường Đại Mỗ, quận Nam Từ Liêm, TP. Hà Nội",
+          
+          "tphcm":"- Thành Phố Hồ Chí Minh: Địa chỉ: 11 Nguyễn Đình Chiểu, Đa Kao, Quận 1, Hồ Chí Minh"
+        },
+
+        "cau_lac_bo":"Học viện Công nghệ Bưu chính Viễn thông (PTIT) cả 2 cơ sở đều có rất nhiều câu lạc bộ đa dạng về nhiều lĩnh vực, một số clb nổi bật như ITPTIT,PROPTIT, CLB máu PTIT,...bạn có thể tìm hiểu chi tiết thêm thông qua các nền tảng mxh",
+       
+       
+         "quan_su":{
+          "hn":"Sinh viên PTIT Hà Nội học quân sự tại TT GDQP&AN (Trường ĐHSP TDTT Hà Nội – Chương Mỹ, Hà Nội) trong thời gian: 04 tuần, với các khoản phụ phí sẽ được thông báo sau khi nhập học",
+          
+          "hcm":"Sinh viên PTIT TP.HCM học quân sự tại Trung tâm Giáo dục Quốc phòng và An ninh (thuộc Đại học Quốc gia TP.HCM), tọa lạc tại Khu quy hoạch Đại học Quốc gia TP.HCM, Phường Đông Hòa, TP. Dĩ An, Tỉnh Bình Dương trong thời gian: 04 tuần, với các khoản phụ phí sẽ được thông báo sau khi nhập học"
+        },
+        "co_so_vat_chat":{
+          "hn":"Cơ sở vật chất của PTIT cơ sở Hà Nội gồm các phòng học,phòng thí nghiệm và trung tâm nghiên cứu hiện đại, hội trường lớn, thư viện không gian mở, phòng thực hành đa dạng và các khu vực thể thao, ký túc xá cho sinh viên học tập và phát triển",
+
+          "tphcm":"Cơ sở vật chất tại PTIT cơ sở TP.HCM bao gồm giảng đường, phòng thực hành hiện đại, thư viện, khu thể thao và ký túc xá hiện đại, cơ sở vật chất được cải thiện và nâng cấp để phù hợp với nhu cầu của sinh viên"
+        }
+      
       }
     }
   }
