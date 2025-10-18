@@ -11,12 +11,43 @@
           "hn": "Cơ sở Hà Nội: Học phí ngành CNTT là 1.020.000 đồng/tín chỉ",
           "tphcm": "Cơ sở TP.HCM: Mức học phí tương tự như cơ sở Hà Nội, dao động từ 29,6 đến 37,6 triệu đồng/năm."
         },
-        "to_hop_mon": "Ngành Công nghệ thông tin xét tuyển các tổ hợp A00 (Toán, Lý, Hóa) và A01 (Toán, Lý, Anh) cho cả hai cơ sở.",
+        "to_hop_mon": "Ngành Công nghệ thông tin xét tuyển các tổ hợp A00 (Toán, Lý, Hóa) và A01 (Toán, Lý, Anh), X06 (Toán, Lý, Tin), X26 (Toán, Tin, Anh) cho cả hai cơ sở.",
         "chuyen_nganh_sau": {
           "hn": "Tại Hà Nội, sinh viên có thể lựa chọn các chuyên ngành sâu như:\n- Kỹ thuật phần mềm\n- Hệ thống thông tin\n- Mạng máy tính và truyền thông dữ liệu",
           "tphcm": "Tại TP.HCM, các chuyên ngành sâu tập trung vào:\n- Công nghệ phần mềm\n- Trí tuệ nhân tạo ứng dụng"
         },
-        "co_hoi_viec_lam": "Sinh viên tốt nghiệp ngành Công nghệ thông tin có cơ hội việc làm rất rộng mở tại các công ty công nghệ, tập đoàn lớn ở cả Hà Nội và TP.HCM, với các vị trí như lập trình viên, kỹ sư phần mềm, chuyên viên phân tích dữ liệu..."
+        "co_hoi_viec_lam": "Sinh viên tốt nghiệp ngành Công nghệ thông tin có cơ hội việc làm rất rộng mở tại các công ty công nghệ, tập đoàn lớn ở cả Hà Nội và TP.HCM, với các vị trí như lập trình viên, kỹ sư phần mềm, chuyên viên phân tích dữ liệu...",
+        "thoi_gian_nop_ho_so": "Thời gian nộp hồ sơ xét tuyển đại học chính quy ngành Công nghệ thông tin PTIT năm 2025 là từ ngày 09/06/2025 đến hết ngày 10/07/2025 cho việc đăng ký thông tin xét tuyển trực tuyến.", 
+        "phuong_thuc_xet_tuyen": "Các phương thức xét tuyển năm 2025 của Học viện gồm: \n- Xét tuyển tài năng.\n- Xét tuyển bằng chứng chỉ quốc tế SAT/ACT.\n- Xét tuyển bằng kết quả kỳ thi Đánh giá năng lực (ĐGNL) hoặc Đánh giá tư duy (ĐGTD).\n- Xét tuyển kết hợp: chứng chỉ tiếng Anh quốc tế (IELTS/TOEFL) + kết quả học tập THPT.\n- Xét tuyển theo kết quả thi tốt nghiệp THPT 2025.",
+        "SĐT_lien_he": {
+          "hn": "Cơ sở Hà Nội: ĐT (024) 33528122, (024) 33512252",
+          "tphcm": "Cơ sở TP.HCM: ĐT ĐT: (028) 38297220; Fax: (028) 39105510"
+        },
+        "diem_chuan_2023_hn": {
+          "tot_nghiep": "Điểm thi tốt nghiệp điểm trúng tuyển là 26.59 điểm",
+          "xet_tuyen_ket_hop": "Điểm xét tuyển kết hợp điểm trúng tuyển là 28.03",
+          "ĐGNL, ĐGTD": "Điểm trúng tuyển với ĐGNL và ĐGTD là 20.05"
+        }, 
+        "diem_chuan_2024_hn": {
+          "xet_tuyen_tai_nang": "Xét tuyển tài năng có điểm trúng tuyển là 82.85/100",
+          "tot_nghiep": "Điểm thi tốt nghiệp điểm trúng tuyển là 26.40/30",
+          "xet_tuyen_ket_hop": "Điểm xét tuyển kết hợp điểm trúng tuyển là 27.01/30",
+          "ĐGNL, ĐGTD": "Điểm trúng tuyển với ĐGNL và ĐGTD là 22.55/30"
+        }, 
+        "diem_chuan_2023_tphcm": {
+          "tot_nghiep": "Điểm thi tốt nghiệp điểm trúng tuyển là 25.1 điểm",
+          "xet_tuyen_ket_hop": "Điểm xét tuyển kết hợp điểm trúng tuyển là 22.82",
+          "ĐGNL, ĐGTD": "Điểm trúng tuyển với ĐGNL và ĐGTD là 17.10"
+        }, 
+        "diem_chuan_2024_tphcm": {
+          "xet_tuyen_tai_nang": "Xét tuyển tài năng có điểm trúng tuyển là 68.83/100",
+          "tot_nghiep": "Điểm thi tốt nghiệp điểm trúng tuyển là 25.17/30",
+          "xet_tuyen_ket_hop": "Điểm xét tuyển kết hợp điểm trúng tuyển là 22.20/30",
+          "ĐGNL, ĐGTD": "Điểm trúng tuyển với ĐGNL và ĐGTD là 18.01/30"
+        },
+        "hinh_thuc": "Ngành Công nghệ thông tin của trường có các tên chương trình liên quan gồm:\n- Hệ chính quy Công nghệ thông tin\n- Công nghệ thông tin Việt-Nhật\n- Cử nhân Công nghệ thông tin (định hướng ứng dụng)\n- Công nghệ thông tin CLC",
+        "link_tham_khao": "Xem chi tiết tại https://tuyensinh.ptit.edu.vn/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-nam-2025/#"
+
       }
     }
   }
