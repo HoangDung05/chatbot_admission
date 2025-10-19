@@ -1,4 +1,5 @@
-scikit-learn
-pandas
-underthesea
 flask
+google-generativeai
+chromadb
+sentence-transformers
+python-dotenv

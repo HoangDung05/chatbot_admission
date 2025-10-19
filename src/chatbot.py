@@ -42,7 +42,7 @@ def get_rag_response(question: str) -> str:
 
     results = collection.query(
         query_texts=[question],
-        n_results=1  # Lấy 3 kết quả liên quan nhất
+        n_results=3  # Lấy 3 kết quả liên quan nhất
     )
 
     context_documents = results['documents'][0]
