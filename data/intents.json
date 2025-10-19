@@ -3,6 +3,7 @@
     "cong_nghe_thong_tin": {
       "full_name": "Công nghệ Thông tin",
       "knowledge": {
+        "xin_chao": "Chào bạn! Tôi có thể giúp gì cho bạn về thông tin tuyển sinh 2025?",
         "chi_tieu": {
           "hn": "Cơ sở Hà Nội: Chỉ tiêu dự kiến ngành CNTT năm 2025 là 600 sinh viên.",
           "tphcm": "Cơ sở TP.HCM: Chỉ tiêu dự kiến ngành CNTT năm 2025 là 230 sinh viên."
@@ -11,12 +12,55 @@
           "hn": "Cơ sở Hà Nội: Học phí ngành CNTT là 1.020.000 đồng/tín chỉ",
           "tphcm": "Cơ sở TP.HCM: Mức học phí tương tự như cơ sở Hà Nội, dao động từ 29,6 đến 37,6 triệu đồng/năm."
         },
-        "to_hop_mon": "Ngành Công nghệ thông tin xét tuyển các tổ hợp A00 (Toán, Lý, Hóa) và A01 (Toán, Lý, Anh) cho cả hai cơ sở.",
+        "to_hop_mon": "Ngành Công nghệ thông tin xét tuyển các tổ hợp A00 (Toán, Lý, Hóa) và A01 (Toán, Lý, Anh), X06 (Toán, Lý, Tin) và X26 (Toán, Tin, Anh) cho cả hai cơ sở.",
         "chuyen_nganh_sau": {
           "hn": "Tại Hà Nội, sinh viên có thể lựa chọn các chuyên ngành sâu như:\n- Kỹ thuật phần mềm\n- Hệ thống thông tin\n- Mạng máy tính và truyền thông dữ liệu",
           "tphcm": "Tại TP.HCM, các chuyên ngành sâu tập trung vào:\n- Công nghệ phần mềm\n- Trí tuệ nhân tạo ứng dụng"
         },
-        "co_hoi_viec_lam": "Sinh viên tốt nghiệp ngành Công nghệ thông tin có cơ hội việc làm rất rộng mở tại các công ty công nghệ, tập đoàn lớn ở cả Hà Nội và TP.HCM, với các vị trí như lập trình viên, kỹ sư phần mềm, chuyên viên phân tích dữ liệu..."
+        "co_hoi_viec_lam": "Sinh viên tốt nghiệp ngành Công nghệ thông tin có cơ hội việc làm rất rộng mở tại các công ty công nghệ, tập đoàn lớn ở cả Hà Nội và TP.HCM, với các vị trí như lập trình viên, kỹ sư phần mềm, chuyên viên phân tích dữ liệu...",
+        "sdt_lien_he": {
+          "hn": "Cơ sở Hà nội có SĐT: (024) 33528122, (024) 33512252",
+          "tphcm": "Cơ sở TP.HCM có SĐT: 028) 38297220; Fax: (028) 39105510"
+        },
+        "fanpage": "Fanpage tuyển sinh của Học viện là https://www.facebook.com/ptittuyensinh/",
+        "diemchuan_2023_hn": {
+          "tai_nang": "Cơ sở Hà Nội năm 2023 chưa có xét tuyển tài năng",
+          "thpt": "Cơ sở Hà Nội năm 2023 điểm thi tốt nghiệp THPT có điểm trúng tuyển là 26.59",
+          "ket_hop": "Cơ sở Hà Nội năm 2023 điểm xét tuyển kết hợp có điểm trúng tuyển 28.03",
+          "dgnl_đgtd": "Cơ sở Hà Nội năm 2023 điểm kỳ thi ĐGNL (đánh giá năng lực), ĐGTD (đánh giá tư duy) có điểm trúng tuyển là 20.05"
+        },
+        "diemchuan_2024_hn": {
+          "tai_nang": "Cơ sở Hà Nội năm 2024 điểm xét tuyển tài năng có điểm trúng tuyển là 82.85/100",
+          "thpt": "Cơ sở Hà Nội năm 2024 điểm thi tốt nghiệp THPT có điểm trúng tuyển là 26.4/30",
+          "ket_hop": "Cơ sở Hà Nội năm 2024 điểm xét tuyển kết hợp có điểm trúng tuyển 27.01/30",
+          "dgnl_đgtd": "Cơ sở Hà Nội năm 2024 điểm kỳ thi ĐGNL (đánh giá năng lực), ĐGTD (đánh giá tư duy) có điểm trúng tuyển là 22.55/30"
+        },
+        "diemchuan_2023_tphcm": {
+          "tai_nang": " Cơ sở TP.HCM năm 2023 chưa có xét tuyển tài năng",
+          "thpt": "Cơ sở TP.HCM năm 2023 điểm thi tốt nghiệp THPT có điểm trúng tuyển là 25.1",
+          "ket_hop": " Cơ sở TP.HCM năm 2023 điểm xét tuyển kết hợp có điểm trúng tuyển 22.82",
+          "dgnl_đgtd": "Cơ sở TP.HCM năm 2023 điểm kỳ thi ĐGNL (đánh giá năng lực), ĐGTD (đánh giá tư duy) có điểm trúng tuyển là 17.10"
+        },
+        "diemchuan_2024_tphcm": {
+          "tai_nang": "Cơ sở TP.HCM năm 2024 điểm xét tuyển tài năng có điểm trúng tuyển là 63.83/100",
+          "thpt": "Cơ sở TP.HCM năm 2024 điểm thi tốt nghiệp THPT có điểm trúng tuyển là 25.17/30",
+          "ket_hop": "Cơ sở TP.HCM năm 2024 điểm xét tuyển kết hợp có điểm trúng tuyển 22.20/30",
+          "dgnl_đgtd": "Cơ sở TP.HCM năm 2024 điểm kỳ thi ĐGNL (đánh giá năng lực), ĐGTD (đánh giá tư duy) có điểm trúng tuyển là 18.01/30/30"
+        },
+        "xet_tuyen_tai_nang": {
+          "tuyen_thang": "(1) Xét tuyển thẳng và ưu tiên xét tuyển: thí sinh đoạt giải Quốc gia, Quốc tế theo Quy chế tuyển sinh hiện hành của Bộ Giáo dục và Đào tạo và của Học viện (có thông báo chi tiết riêng).\n",
+          "ho_so_nang_luc (HSNL)": "(2) Xét tuyển dựa vào hồ sơ năng lực (HSNL): Đối với các thí sinh có Thành tích đoạt giải trong kỳ thi chọn học sinh giỏi THPT cấp quốc gia (giải Khuyến khích), cấp Tỉnh/Thành phố trực thuộc TW (Nhất, Nhì, Ba và Khuyến khích), thời gian đoạt giải không quá 3 năm tính tới thời điểm xét tuyển hoặc thí sinh tham gia kỳ thi chọn học sinh giỏi quốc gia, hoặc là học sinh tại các trường THPT chuyên hoặc hệ chuyên thuộc các trường THPT trọng điểm quốc gia.",
+          "chi_tiet": "Xem chi tiết tại https://tuyensinh.ptit.edu.vn/thong-tin-tuyen-sinh-dai-hoc-chinh-quy-nam-2025/" 
+        },
+
+        "lien_quan": "Học viện có các chương trình đào tạo liên quan đến Công nghệ thông tin như:\n- Cử nhân công nghệ thông tin (định hướng ứng dụng)\n- Công nghệ thông tin Việt-Nhật\n- Công nghệ thông tin chất lượng cao (CLC)",
+        "chi_tiet_hb": {
+          "hb_dacbiet": "Học bổng đặc biệt: năm 2025, Học viện Công nghệ Bưu chính Viễn thông cấp tối đa 30 suất học bổng đặc biệt, giá trị mỗi suất học bổng tới 500 triệu đồng, đối tượng  là các thí sinh tham dự kỳ thi chọn đội tuyển quốc gia dự thi Olympic quốc tế, thí sinh đoạt giải Nhất, Nhì, Ba trong kỳ thi chọn học sinh giỏi quốc gia các môn Toán, Vật lí và Tin học; thí sinh có điểm thi tốt nghiệp THPT từ 29,0 điểm trở lên.",
+          "hb_toanphan": "Học bổng toàn phần: năm 2025, Học viện Công nghệ Bưu chính Viễn thông cấp tối đa 50 suất học bổng toàn phần với giá trị học bổng tới 250 triệu đồng cho các thí sinh đoạt giải Nhất trong kỳ thi học sinh giỏi cấp Tỉnh/Thành phố trực thuộc TW các môn Toán, Vật lí và Tin học. Người được nhận học bổng toàn phần phải đảm bảo điểm trung bình chung tích lũy năm học liên tục đạt từ loại Giỏi trở lên trong thời gian học tập.",
+          "hb_100%_nam1": "Học bổng miễn 100% học phí trong năm học thứ nhất với tối đa 100 suất cho đối tượng là các thí sinh đoạt trong kỳ thi học sinh giỏi quốc tế, quốc gia hoặc thí sinh đoạt giải Nhất, Nhì, Ba trong kỳ thi học sinh giỏi cấp Tỉnh, Thành phố trực thuộc TW các môn Toán, Vật lí, Hóa học và Tin học hoặc đạt kết quả cao trong kỳ thi tốt nghiệp THPT năm 2025",
+          "hb_50%_nam1": "Học bổng miễn 50% học phí trong năm học thứ nhất với tối đa 300 suất cho đối tượng là các thí sinh đoạt giải trong kỳ thi học sinh giỏi hoặc đạt kết quả cao trong kỳ thi tốt nghiệp THPT năm 2025;",
+          "tungky":"Trong quá trình học tập sinh viên có thể đạt được học bổng của trường nếu yêu cầu GPA và điểm rèn luyện được thỏa mãn"
+        }
       }
     }
   }
