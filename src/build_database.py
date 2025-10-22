@@ -8,7 +8,7 @@ print("Bắt đầu quá trình xây dựng cơ sở dữ liệu vector...")
 
 # --- Phần 1: Thiết lập các Hằng số ---
 DATA_FILE_PATH = os.path.join('data', 'intents.json')  # Tên file JSON của bạn
-DB_PATH = "db"
+DB_PATH = "data"
 COLLECTION_NAME = "ptit_chatbot_rag"
 EMBEDDING_MODEL = "bkai-foundation-models/vietnamese-bi-encoder"
 

@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 load_dotenv()
 
 # --- Các hằng số ---
-DB_PATH = "db"
+DB_PATH = "data"
 COLLECTION_NAME = "ptit_chatbot_rag"
 EMBEDDING_MODEL = "bkai-foundation-models/vietnamese-bi-encoder"
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
