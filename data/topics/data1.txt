@@ -1,0 +1,67 @@
+ CÁCH TÍNH ĐIỂM XÉT TUYỂN CỦA CÁC PHƯƠNG THỨC XÉT TUYỂN (Điểm xét tuyển chưa quy đổi tương đương theo quy định của Bộ Giáo dục và Đào tạo)
+
+1. Phương thức Xét tuyển tài năng: Xét tuyển dựa vào hồ sơ năng lực (HSNL)
+    – Điểm HSNL = Điểm học lực + Điểm thành tích + Điểm ưu tiên (nếu có).
+    Trong đó:
+        • Điểm HSNL được quy đổi theo thang điểm 100;
+        • Điểm học lực chiếm 60% (tối đa 60 điểm);
+        • Điểm thành tích chiếm 40% (tối đa 40 điểm);
+        • Điểm ưu tiên thực hiện theo Quy chế tuyển sinh của Bộ GD&ĐT và được quy đổi theo thang điểm 100 tương ứng.
+    – Điểm học lực (ĐHL) được tính bằng tổng của ba (03) điểm bình quân kết quả học tập ở năm học lớp 10, 11, 12 của ba (03) môn học tương ứng với tổ hợp bài thi/môn thi của ngành đã đăng ký xét tuyển, cụ thể:
+        ĐHL = [Điểm BQ môn 1 + Điểm BQ môn 2 + Điểm BQ môn 3]*6/3
+        với Điểm BQ môn = [Điểm năm lớp 10 + Điểm năm lớp 11 + Điểm năm lớp 12]/3
+
+    – Điểm thành tích được xác định cụ thể như sau:
+        Thành tích tại kỳ thi HSG
+            1.1 Giải Khuyến khích Quốc gia; Thí sinh tham dự kỳ thi chọn đội tuyển quốc gia dự thi Olympic quốc tế; Thí sinh trong đội tuyển quốc gia dự thi Quốc tế toán học, khoa học, kỹ thuật quốc tế
+                Điểm: 40
+            1.2 Giải Nhất cấp Tỉnh/Thành phố TW
+                Điểm: 35
+            1.3 Giải Nhì cấp Tỉnh/Thành phố TW
+                Điểm: 30
+            1.4 Giải Ba cấp Tỉnh/Thành phố TW
+                Điểm: 25
+            1.5 Giải Khuyến khích cấp Tỉnh/Thành phố TW
+                Điểm: 20
+            Học sinh chuyên (không có giải), Thí sinh tham gia kỳ thi chọn học sinh giỏi quốc gia
+                Điểm: 25
+        Ghi chú: Thí sinh chỉ được lựa chọn một (01) loại thành tích cao nhất.
+
+2. Xét tuyển dựa vào kết quả Chứng chỉ đánh giá năng lực quốc tế (chứng chỉ SAT/ACT)
+    Điểm xét tuyển (ĐXT) = điểm SAT/ACT + Điểm cộng (nếu có) + Điểm ưu tiên (nếu có)
+
+3. Xét tuyển dựa vào kết quả bài thi đánh giá năng lực hoặc đánh giá tư duy
+    Điểm xét tuyển (ĐXT) = Điểm ĐGNL/ ĐGTD + Điểm cộng (nếu có) + Điểm ưu tiên (nếu có)
+
+4. Xét tuyển kết hợp giữa chứng chỉ tiếng anh quốc tế (chứng chỉ IELTS, TOEFL) với kết quả học tập ở bậc THPT
+    – Điểm xét tuyển (ĐXT) được tính bằng tổng của ba (03) điểm bình quân kết quả học tập ở năm học lớp 10, 11, 12 của ba (03) môn học tương ứng với tổ hợp bài thi/môn thi đã đăng ký xét tuyển, cộng với điểm ưu tiên, điểm cộng (nếu có);
+        ĐXT = [Điểm BQ môn 1 + Điểm BQ môn 2 + Điểm BQ môn 3] + Điểm cộng (nếu có) + Điểm ưu tiên (nếu có).
+        Trong đó:
+        Điểm BQ môn = [Điểm năm lớp 10 + Điểm năm lớp 11 + Điểm năm lớp 12]/3
+    – Thí sinh được phép quy đổi điểm môn tiếng Anh trong tổ hợp xét tuyển khi có Chứng chỉ tiếng Anh quốc tế. Cụ thể:
+        1: IELTS 7.0 – 9.0; TOEFL iBT từ 90 điểm trở lên; TOEFL ITP từ 590 điểm trở lên; Điểm quy đổi (*) 10 điểm.
+        2: IELTS 6.5; TOEFL iBT 79 – 89; TOEFL ITP 561 – 589; Điểm quy đổi (*) 9,5 điểm.
+        3: IELTS 6.0; TOEFL iBT 72 – 78; TOEFL ITP 543 – 560; Điểm quy đổi (*) 9,0 điểm.
+        4: IELTS 5.5; TOEFL iBT 61 – 71; TOEFL ITP 500 – 542; Điểm quy đổi (*) 8,5 điểm.
+    (*) Chú thích: Chỉ quy đổi điểm môn tiếng Anh trong Điểm xét tuyển (điểm xét tuyển cuối cùng), không quy đổi điểm môn tiếng Anh của từng năm học.
+
+5. Xét tuyển dựa vào kết quả thi tốt nghiệp THPT năm 2025
+    ĐXT = M1 + M2 + M3 + Điểm ưu tiên (nếu có)
+    Trong đó: M1, M2, M3 là kết quả điểm thi tốt nghiệp THPT của 03 bài thi/môn thi theo tổ hợp xét tuyển tương ứng các ngành của Học viện.
+
+ĐIỂM CỘNG
+Cộng Điểm thưởng cho thí sinh đạt giải: Áp dụng Đối với Phương thức xét tuyển dựa vào kết quả Chứng chỉ đánh giá năng lực quốc tế, Phương thức xét tuyển kết hợp giữa Chứng chỉ tiếng Anh quốc tế với kết quả học tập ở bậc THPT và Phương thức xét tuyển dựa vào kết quả bài thi ĐGNL, ĐGTD
+Thí sinh được cộng Điểm thưởng theo thành tích giải đạt được vào Điểm xét tuyển. Cụ thể:
+    1: Giải Khuyến khích cấp Quốc gia, Thí sinh tham dự kỳ thi chọn đội tuyển quốc gia dự thi Olympic quốc tế các môn Toán, Vật lý, Hóa học hoặc Tin học; Thí sinh trong đội tuyển quốc gia dự thi Quốc tế môn khoa học, kỹ thuật quốc tế — Điểm cộng được hưởng là 3,0 (ba điểm).
+
+    2: Giải Nhất cấp Tỉnh/Thành phố TW — Điểm cộng được hưởng là 2,5 (hai phẩy năm) điểm.
+
+    3: Giải Nhì cấp Tỉnh/Thành phố TW — Điểm cộng được hưởng là 2,0 (hai) điểm.
+
+    4: Giải Ba cấp Tỉnh/Thành phố TW — Điểm cộng được hưởng là 1,5 (một phẩy năm) điểm.
+
+    5: Giải Khuyến khích cấp Tỉnh/Thành phố TW — Điểm cộng được hưởng là 1,0 (một) điểm.
+
+    Lưu ý:
+    • Thí sinh đoạt nhiều giải chỉ được cộng điểm một lần ứng với giải cao nhất đoạt được.
+    • Điểm cộng sẽ được quy đổi theo thang điểm tương ứng của từng Phương thức tuyển sinh và đảm bảo không vượt quá 10% mức điểm tối đa của thang điểm xét.

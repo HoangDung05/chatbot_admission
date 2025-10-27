@@ -1,0 +1,41 @@
+Điểm chuẩn ngành CNTT và CNTT-CLC PTIT 
+    Năm 2025: Điểm chuẩn ngành CNTT là 26.21 điểm và ngành CNTT-CLC là 24.75 điểm 
+    Năm 2024: Điểm chuẩn ngành CNTT là 26.4 điểm và ngành CNTT-CLC là 25.43 điểm 
+    Năm 2023: Điểm chuẩn ngành CNTT là 26.59 điểm và ngành CNTT-CLC là 25.38 điểm 
+
+Tổ hợp xét tuyển ngành CNTT
+    Ngành Công nghệ thông tin xét tuyển các tổ hợp: - A00 (Toán, Lý, Hóa) - A01 (Toán, Lý, Anh) - X06 (Toán, Lý, Tin) - X26 (Toán, Tin, Anh).
+
+Hồ sơ đăng ký xét tuyển vào Học viện Công nghệ Bưu chính Viễn thông bao gồm Phiếu đăng ký tuyển sinh, Bản sao hợp lệ Bằng tốt nghiệp THPT (hoặc Giấy chứng nhận tốt nghiệp tạm thời), Bản sao hợp lệ Học bạ THPT, Bản sao hợp lệ Giấy khai sinh, Ảnh thẻ 3x4, và các giấy tờ minh chứng khác tùy theo phương thức xét tuyển.
+
+
+Các chuyên ngành chính 
+    Sinh viên sau khi nhập học và học một số học phần cơ sở sẽ đăng ký chọn chuyên ngành vào kỳ 2 năm 3, bao gồm: - Mạng máy tính và Truyền thông dữ liệu - Công nghệ phần mềm - Hệ thống thông tin.
+
+Kiến thức được học 
+    Kiến thức đại cương: 
+        Khoa học xã hội và nhân văn: Lý luận chính trị (Chủ nghĩa Mác-Lênin, Tư tưởng Hồ Chí Minh), Pháp luật đại cương, Kinh tế chính trị, Lịch sử Đảng, Chủ nghĩa xã hội khoa học..
+        Toán và Khoa học cơ bản: Toán cao cấp (Giải tích, Đại số), Xác suất thống kê, Toán rời rạc, Vật lý.... 
+        Kỹ năng: Kỹ năng mềm , Phương pháp nghiên cứu khoa học. 
+    Kiến thức chuyên ngành
+        Lập trình và phát triển phần mềm:
+        Nhập môn lập trình, Lập trình với C++, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật. 
+        Phát triển ứng dụng Website. 
+        Giới thiệu Kỹ thuật phần mềm, Phân tích và thiết kế hệ thống thông tin, Đảm bảo chất lượng phần mềm,Lập trình Python.
+        Kiến trúc máy tính, Mạng máy tính, Cơ sở dữ liệu,...
+        Chuyên sâu (tùy chương trình):
+    Kỹ năng và ngoại ngữ
+        Kỹ năng: Kỹ năng mềm (tự chủ, trách nhiệm, làm việc nhóm), Kỹ năng nghề nghiệp (giải quyết vấn đề, tư duy logic). 
+    Ngoại ngữ: Tiếng Anh chuyên ngành và các kỹ năng giao tiếp quốc tế. 
+
+Các câu lạc bộ chuyên ngành công nghệ thông tin
+    CLB Lập trình PTIT: Dành cho sinh viên có đam mê lập trình, đây là một trong những CLB học thuật chính của khoa CNTT.
+    CLB IT PTIT: Một câu lạc bộ học thuật khác tập trung vào lĩnh vực công nghệ thông tin.
+    CLB Multimedia PTIT: Tập trung vào các lĩnh vực liên quan đến đa phương tiện.
+    CLB Điện tử PTIT: Chuyên về các hoạt động và kiến thức trong lĩnh vực điện tử.
+    CLB Nhà Sáng Tạo Game PTIT: Dành cho những sinh viên muốn tìm hiểu và phát triển về mảng làm game.
+    CLB công nghệ thông tin UDU: Một câu lạc bộ khác tập trung vào CNTT. 
+    Các câu lạc bộ liên quan đến công nghệ và học thuật
+    CLB EMA: Liên quan đến công nghệ và truyền thông. 
+    CLB GDSC PTIT: Câu lạc bộ phát triển bền vững của Google. 
+    ProPTIT: Một câu lạc bộ học thuật khác hỗ trợ sinh viên học tập trong ngành, theo thông tin từ trang web của CLB Lập trình. 

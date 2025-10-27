@@ -1,23 +1,20 @@
-import json
 import os
+import glob
 from sentence_transformers import SentenceTransformer
 import chromadb
 from chromadb.utils import embedding_functions
 
-print("Bắt đầu quá trình xây dựng cơ sở dữ liệu vector...")
+print("Bắt đầu quá trình xây dựng cơ sở dữ liệu vector từ các file TXT trong thư mục data/topics/...")
 
-# --- Phần 1: Thiết lập các Hằng số ---
-DATA_FILE_PATH = os.path.join('data', 'intents.json')  # Tên file JSON của bạn
-DB_PATH = "data"
+# --- Cấu hình ---
+DATA_FOLDER = os.path.join('data', 'topics')   #  thư mục chứa nhiều file TXT
+DB_PATH = "data"                               # nơi lưu cơ sở dữ liệu vector (chroma.sqlite3)
 COLLECTION_NAME = "ptit_chatbot_rag"
 EMBEDDING_MODEL = "bkai-foundation-models/vietnamese-bi-encoder"
 
 
 def build_database():
-    """
-    Đọc dữ liệu từ file JSON có cấu trúc từ điển lồng nhau và lưu vào ChromaDB.
-    """
-    # --- Phần 2: Khởi tạo các thành phần ---
+    # --- Khởi tạo mô hình embedding ---
     print(f"Đang tải mô hình embedding: {EMBEDDING_MODEL}...")
     model = SentenceTransformer(EMBEDDING_MODEL)
 
@@ -28,65 +25,50 @@ def build_database():
         model_name=EMBEDDING_MODEL
     )
 
-    # Xóa collection cũ nếu tồn tại để đảm bảo dữ liệu luôn mới
+    # --- Xóa collection cũ nếu tồn tại ---
     if COLLECTION_NAME in [c.name for c in client.list_collections()]:
         print(f"Collection '{COLLECTION_NAME}' đã tồn tại. Đang xóa để xây dựng lại...")
         client.delete_collection(name=COLLECTION_NAME)
 
+    # --- Tạo collection mới ---
     collection = client.create_collection(
         name=COLLECTION_NAME,
         embedding_function=embedding_function,
         metadata={"hnsw:space": "cosine"}
     )
 
-    # --- Phần 3: Đọc và xử lý dữ liệu ---
-    print(f"Đang đọc và xử lý dữ liệu từ: {DATA_FILE_PATH}...")
-    with open(DATA_FILE_PATH, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    # --- Đọc toàn bộ file TXT ---
+    print(f"Đang đọc dữ liệu từ thư mục: {DATA_FOLDER}...")
+    txt_files = glob.glob(os.path.join(DATA_FOLDER, "*.txt"))
+    if not txt_files:
+        print(" Không tìm thấy file .txt nào trong thư mục topics. Hãy kiểm tra lại!")
+        return
 
-    documents = []
-    metadatas = []
-    ids = []
-    id_counter = 1
+    documents, metadatas, ids = [], [], []
+    total_chunks = 0
 
-    # Lặp qua các ngành trong "knowledge_base"
-    for major_key, major_data in data['knowledge_base'].items():
-        full_name = major_data['full_name']
-        print(f"Đang xử lý ngành: {full_name}")
+    for file_index, file_path in enumerate(txt_files, start=1):
+        file_name = os.path.splitext(os.path.basename(file_path))[0]
+        with open(file_path, 'r', encoding='utf-8') as f:
+            text = f.read().strip()
 
-        # Lặp qua các chủ đề kiến thức trong "knowledge" của từng ngành
-        for topic_key, topic_content in major_data['knowledge'].items():
+        # --- Chia nội dung file thành các đoạn nhỏ (chunk) ---
+        chunks = [text[i:i+800] for i in range(0, len(text), 800)]  # mỗi 800 ký tự là 1 đoạn
 
-            # KIỂM TRA XEM NỘI DUNG LÀ CHUNG HAY RIÊNG THEO CƠ SỞ
-            if isinstance(topic_content, str):
-                # Trường hợp thông tin chung cho cả 2 cơ sở
-                doc_content = f"Chủ đề: {full_name} - {topic_key}. Nội dung: {topic_content}"
-                documents.append(doc_content)
-                metadatas.append({'major': major_key, 'topic': topic_key})
-                ids.append(f"doc_{id_counter}")
-                id_counter += 1
+        for i, chunk in enumerate(chunks, start=1):
+            documents.append(chunk)
+            metadatas.append({'file': file_name, 'segment': f'phần_{i}'})
+            ids.append(f'{file_name}_chunk_{i}')
+            total_chunks += 1
 
-            elif isinstance(topic_content, dict):
-                # Trường hợp thông tin riêng cho từng cơ sở
-                for location_key, location_content in topic_content.items():
-                    location_fullname = "Hà Nội" if location_key == "hn" else "TP.HCM"
-                    doc_content = f"Chủ đề: {full_name} - {topic_key} (Cơ sở {location_fullname}). Nội dung: {location_content}"
-                    documents.append(doc_content)
-                    metadatas.append({'major': major_key, 'topic': topic_key, 'location': location_key})
-                    ids.append(f"doc_{id_counter}")
-                    id_counter += 1
+        print(f"    Đã đọc {len(chunks)} đoạn từ file: {file_name}")
 
-    # --- Phần 4: Nạp dữ liệu vào ChromaDB ---
-    print(f"Đang nạp {len(documents)} tài liệu vào collection '{COLLECTION_NAME}'...")
-    if documents:
-        collection.add(
-            documents=documents,
-            metadatas=metadatas,
-            ids=ids
-        )
+    # --- Nạp dữ liệu vào collection ---
+    print(f"\nĐang nạp tổng cộng {total_chunks} đoạn văn từ {len(txt_files)} file TXT vào collection '{COLLECTION_NAME}'...")
+    collection.add(documents=documents, metadatas=metadatas, ids=ids)
 
-    print("✅ Hoàn tất! Cơ sở dữ liệu vector đã được xây dựng và lưu thành công.")
-    print(f"Tổng số tài liệu được nạp: {collection.count()}")
+    print("\n Hoàn tất! Cơ sở dữ liệu vector đã được xây dựng từ các file TXT.")
+    print(f" Tổng số đoạn văn trong collection: {collection.count()}")
 
 
 if __name__ == "__main__":
