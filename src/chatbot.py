@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 import chromadb
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer, util
 import re
 
 # --- Khởi tạo & Tải các mô hình ---
@@ -34,6 +34,35 @@ print("✅ Chatbot đã sẵn sàng!")
 # --- Bộ nhớ hội thoại (conversation memory) ---
 conversation_history = []  # Lưu danh sách [{role, content}, ...]
 
+# --- HÀM TÓM TẮT (Summary) ---
+def summarize_text(text: str) -> str:
+    """Dùng Gemini để tóm tắt tài liệu dài"""
+    try:
+        if len(text)>300:
+            prompt = f"Tóm tắt ngắn gọn nội dung sau bằng tiếng Việt:\n{text}"
+            response = gemini_model.generate_content(prompt)
+            return response.text.strip()
+        else:
+            return text
+    except:
+        return text  # fallback: giữ nguyên nếu lỗi
+    
+# --- HÀM RERANK ---
+def rerank_documents(question, docs, top_n=3):
+    """Sử dụng cosine similarity để sắp xếp lại độ liên quan"""
+    q_vec = embedding_model.encode(question, convert_to_tensor=True)
+    d_vecs = embedding_model.encode(docs, convert_to_tensor=True)
+    scores = util.cos_sim(q_vec, d_vecs)[0]
+    sorted_indices = scores.argsort(descending=True)
+    reranked = [docs[i] for i in sorted_indices[:top_n]]
+    return reranked
+
+# --- HÀM FUSION ---
+def fuse_documents(docs):
+    """Kết hợp các đoạn văn ngắn lại"""
+    return "\n---\n".join(docs)
+
+
 # --- Hàm xử lý chính của Chatbot ---
 def get_rag_response(question: str) -> str:
     """
@@ -44,15 +73,21 @@ def get_rag_response(question: str) -> str:
     # Tạo vector cho câu hỏi và truy vấn ChromaDB để lấy ngữ cảnh
     results = collection.query(
         query_texts=[question],
-        n_results=3
+        n_results=5
     )
 
     context_documents = results['documents'][0]
     if not context_documents:
         print("Không tìm thấy thông tin liên quan trong cơ sở dữ liệu.")
         return "Xin lỗi, tôi không có thông tin về vấn đề này. Bạn có thể hỏi câu khác không?"
+    # --rerank--
+    reranked_docs = rerank_documents(question, context_documents, top_n=5)
+    # --sumarize--
+    summarized_docs = [summarize_text(doc) for doc in reranked_docs]
+    # --fusion--
+    fused_context = fuse_documents(summarized_docs)
 
-    context = "\n\n".join(context_documents)
+    context = fused_context
     print(f"Ngữ cảnh tìm được:\n---\n{context}\n---")
 
     # Gộp hội thoại trước vào prompt
@@ -70,7 +105,7 @@ def get_rag_response(question: str) -> str:
     3. Người dùng có thể **hỏi tiếp về cùng chủ đề** ở câu trước, hãy **dựa vào lịch sử hội thoại** để hiểu câu hỏi của người dùng.
     4. Trả lời tự nhiên, lịch sự bằng tiếng Việt.
     5. Câu trả lời cuối cùng của bạn **PHẢI** được định dạng bằng HTML.
-    6. Nếu [NGỮ CẢNH] có dạng liệt kê hãy chuyển chúng thành danh sách HTML hãy dùng thẻ <ul> và <li>.
+    6. Nếu [NGỮ CẢNH] có dạng liệt kê hãy chuyển chúng thành danh sách HTML hãy dùng thẻ <ul> và <li> có dấu "-" hoặc "*" trước mỗi đoạn.
     7. Nếu không đủ thông tin, trả lời: "Xin lỗi, tôi không có thông tin chi tiết về vấn đề này."
 
     **[HỘI THOẠI TRƯỚC]**
@@ -93,15 +128,15 @@ def get_rag_response(question: str) -> str:
         # 1. Lấy văn bản thô từ Gemini
         raw_text = response.text.strip()
         # 2. Dọn dẹp các dấu ```html và ``` ở đầu và cuối chuỗi
-        cleaned_text = re.sub(r"^```html\s*|\s*```$", "", raw_text, flags=re.MULTILINE).strip()
         cleaned_text = raw_text.strip()
-        if cleaned_text.startswith("```html"):
-            cleaned_text = cleaned_text[7:]   # Bỏ 7 ký tự '```html'
-        if cleaned_text.endswith("```"):
-            cleaned_text = cleaned_text[:-3]  ## Bỏ 3 ký tự '```'
+        cleaned_text = re.sub(r"^```html\s*|\s*```$", "", raw_text, flags=re.MULTILINE).strip()
+        # if cleaned_text.startswith("```html"):
+        #     cleaned_text = cleaned_text[7:]   # Bỏ 7 ký tự '```html'
+        # if cleaned_text.endswith("```"):
+        #     cleaned_text = cleaned_text[:-3]  ## Bỏ 3 ký tự '```'
         
         # 3. Trả về văn bản đã được làm sạch
-        cleaned_text.strip()
+        cleaned_text = cleaned_text.strip()
 
         # Lưu câu hỏi và câu trả lời vào bộ nhớ hội thoại
         conversation_history.append({"role": "user", "content": question})

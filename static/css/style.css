@@ -221,7 +221,6 @@ ul {
   padding: 10px 15px;
   border-radius: 15px;
   max-width: 80%;
-  min-width: 50px;
 }
 
 .bot-message {
@@ -259,44 +258,4 @@ ul {
   margin-left: 10px;
   cursor: pointer;
   font-size: 16px;
-}
-
-/* CSS cho hiệu ứng dấu ba chấm nhấp nháy */
-.typing-indicator p {
-  /* Đặt văn bản mặc định (ví dụ: "...") và ẩn phần dư */
-  visibility: hidden;
-  /* Giữ nguyên kích thước của thẻ p */
-  width: 20px;
-  min-height: 1.2em; /* Giữ chiều cao cố định */
-  position: relative;
-  padding-right: 0;
-}
-
-.typing-indicator p::after {
-  /* Hiển thị dấu ba chấm */
-  font-weight: bold;
-  font-size: 1.2em;
-  line-height: 1.2em;
-
-  visibility: visible;
-  content: ".";
-  position: absolute;
-  left: 0;
-  /* Áp dụng animation nhấp nháy vào pseudo-element */
-  animation: loading-dots-opacity 1s infinite;
-}
-
-@keyframes loading-dots-opacity {
-  0% {
-    content: ".";
-  }
-  33% {
-    content: "..";
-  }
-  66% {
-    content: "...";
-  }
-  100% {
-    content: "...";
-  }
 }
