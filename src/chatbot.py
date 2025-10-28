@@ -67,11 +67,10 @@ def get_rag_response(question: str) -> str:
     **QUY TẮC BẮT BUỘC:**
     1. Dựa **CHÍNH XÁC** và **DUY NHẤT** vào phần [NGỮ CẢNH] để trả lời câu hỏi.
     2. Không được bịa đặt, suy diễn hay thêm thông tin ngoài [NGỮ CẢNH].
-    2.5. Người dùng có thể **hỏi tiếp về cùng chủ đề** ở câu trước, hãy **dựa vào lịch sử hội thoại** để hiểu câu hỏi của người dùng.
-    3. Nếu [NGỮ CẢNH] cung cấp thông tin riêng cho hai cơ sở Hà Nội (HN) và TP.HCM, bạn **PHẢI** trình bày rõ ràng thông tin cho cả hai cơ sở đó. Hãy dùng gạch đầu dòng hoặc tiêu đề phụ để phân biệt.
+    3. Người dùng có thể **hỏi tiếp về cùng chủ đề** ở câu trước, hãy **dựa vào lịch sử hội thoại** để hiểu câu hỏi của người dùng.
     4. Trả lời tự nhiên, lịch sự bằng tiếng Việt.
     5. Câu trả lời cuối cùng của bạn **PHẢI** được định dạng bằng HTML.
-    6. Nếu [NGỮ CẢNH] có danh sách dạng gạch đầu dòng (dùng dấu - hoặc *), hãy chuyển chúng thành danh sách HTML hãy dùng thẻ <ul> và <li>.
+    6. Nếu [NGỮ CẢNH] có dạng liệt kê hãy chuyển chúng thành danh sách HTML hãy dùng thẻ <ul> và <li>.
     7. Nếu không đủ thông tin, trả lời: "Xin lỗi, tôi không có thông tin chi tiết về vấn đề này."
 
     **[HỘI THOẠI TRƯỚC]**
