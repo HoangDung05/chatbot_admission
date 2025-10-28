@@ -2,6 +2,11 @@
     Năm 2025: Điểm chuẩn ngành CNTT là 26.21 điểm và ngành CNTT-CLC là 24.75 điểm 
     Năm 2024: Điểm chuẩn ngành CNTT là 26.4 điểm và ngành CNTT-CLC là 25.43 điểm 
     Năm 2023: Điểm chuẩn ngành CNTT là 26.59 điểm và ngành CNTT-CLC là 25.38 điểm 
+    
+Chỉ tiêu tuyển sinh ngành CNTT
+-Năm 2025: Chỉ tiêu tuyển sinh ngành CNTT là 600 sinh viên 
+- Năm 2024: Chỉ tiêu tuyển sinh ngành CNTT là 600 sinh viên
+- Năm 2023: Chỉ tiêu tuyển sinh ngành CNTT là 730 sinh viên
 
 Tổ hợp xét tuyển ngành CNTT
     Ngành Công nghệ thông tin xét tuyển các tổ hợp: - A00 (Toán, Lý, Hóa) - A01 (Toán, Lý, Anh) - X06 (Toán, Lý, Tin) - X26 (Toán, Tin, Anh).
