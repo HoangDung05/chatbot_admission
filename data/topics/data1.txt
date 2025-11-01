@@ -1,4 +1,4 @@
- CÁCH TÍNH ĐIỂM XÉT TUYỂN CỦA CÁC PHƯƠNG THỨC XÉT TUYỂN (Điểm xét tuyển chưa quy đổi tương đương theo quy định của Bộ Giáo dục và Đào tạo)
+CÁCH TÍNH ĐIỂM XÉT TUYỂN CỦA CÁC PHƯƠNG THỨC XÉT TUYỂN (Điểm xét tuyển chưa quy đổi tương đương theo quy định của Bộ Giáo dục và Đào tạo)
 
 1. Phương thức Xét tuyển tài năng: Xét tuyển dựa vào hồ sơ năng lực (HSNL)
     – Điểm HSNL = Điểm học lực + Điểm thành tích + Điểm ưu tiên (nếu có).
