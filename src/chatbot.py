@@ -52,8 +52,8 @@ def rerank_documents(question, docs, top_n=3):
     """Sử dụng cosine similarity để sắp xếp lại độ liên quan"""
     q_vec = embedding_model.encode(question, convert_to_tensor=True)
     d_vecs = embedding_model.encode(docs, convert_to_tensor=True)
-    scores = util.cos_sim(q_vec, d_vecs)[0]
-    sorted_indices = scores.argsort(descending=True)
+    scores = util.cos_sim(q_vec, d_vecs)[0] #tính độ tương đồn cosine giữa q_vec và d_vecs
+    sorted_indices = scores.argsort(descending=True) # sắp xếp giảm dần
     reranked = [docs[i] for i in sorted_indices[:top_n]]
     return reranked
 
