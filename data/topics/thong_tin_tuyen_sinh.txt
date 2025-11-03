@@ -1,7 +1,4 @@
-Điểm chuẩn ngành CNTT cơ sở HN và TP.HCM
-    Năm 2025: Điểm chuẩn ngành CNTT cơ sở HN là 26.21 điểm và cơ sở HCM là 23.47 điểm 
-    Năm 2024: Điểm chuẩn ngành CNTT là 26.4 điểm và cơ sở HCM là 25.17 điểm 
-    Năm 2023: Điểm chuẩn ngành CNTT là 26.59 điểm và cơ sở HCM là 25.1 điểm  
+ 
     
 Chỉ tiêu tuyển sinh ngành CNTT
 -Năm 2025: Chỉ tiêu tuyển sinh ngành CNTT là 600 sinh viên và cơ sở HCM là 230 sinh viên 
@@ -10,9 +7,6 @@ Chỉ tiêu tuyển sinh ngành CNTT
 
 Tổ hợp xét tuyển ngành CNTT
     Ngành Công nghệ thông tin xét tuyển các tổ hợp: - A00 (Toán, Lý, Hóa) - A01 (Toán, Lý, Anh) - X06 (Toán, Lý, Tin) - X26 (Toán, Tin, Anh).
-
-Hồ sơ đăng ký xét tuyển vào Học viện Công nghệ Bưu chính Viễn thông bao gồm Phiếu đăng ký tuyển sinh, Bản sao hợp lệ Bằng tốt nghiệp THPT (hoặc Giấy chứng nhận tốt nghiệp tạm thời), Bản sao hợp lệ Học bạ THPT, Bản sao hợp lệ Giấy khai sinh, Ảnh thẻ 3x4, và các giấy tờ minh chứng khác tùy theo phương thức xét tuyển.
-
 
 Các chuyên ngành chính 
     Sinh viên sau khi nhập học và học một số học phần cơ sở sẽ đăng ký chọn chuyên ngành vào kỳ 2 năm 3, bao gồm: - Mạng máy tính và Truyền thông dữ liệu - Công nghệ phần mềm - Hệ thống thông tin.
