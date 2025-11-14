@@ -130,10 +130,6 @@ def get_rag_response(question: str) -> str:
         # 2. Dọn dẹp các dấu ```html và ``` ở đầu và cuối chuỗi
         cleaned_text = raw_text.strip()
         cleaned_text = re.sub(r"^```html\s*|\s*```$", "", raw_text, flags=re.MULTILINE).strip()
-        # if cleaned_text.startswith("```html"):
-        #     cleaned_text = cleaned_text[7:]   # Bỏ 7 ký tự '```html'
-        # if cleaned_text.endswith("```"):
-        #     cleaned_text = cleaned_text[:-3]  ## Bỏ 3 ký tự '```'
         
         # 3. Trả về văn bản đã được làm sạch
         cleaned_text = cleaned_text.strip()
