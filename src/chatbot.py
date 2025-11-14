@@ -38,7 +38,7 @@ conversation_history = []  # Lưu danh sách [{role, content}, ...]
 def summarize_text(text: str) -> str:
     """Dùng Gemini để tóm tắt tài liệu dài"""
     try:
-        if len(text)>300:
+        if len(text)>1000:
             prompt = f"Tóm tắt ngắn gọn nội dung sau bằng tiếng Việt:\n{text}"
             response = gemini_model.generate_content(prompt)
             return response.text.strip()
@@ -107,7 +107,6 @@ def get_rag_response(question: str) -> str:
     5. Câu trả lời cuối cùng của bạn **PHẢI** được định dạng bằng HTML.
     6. Nếu [NGỮ CẢNH] có dạng liệt kê hãy chuyển chúng thành danh sách HTML hãy dùng thẻ <ul> và <li> có dấu "-" hoặc "*" trước mỗi đoạn.
     7. Nếu không đủ thông tin, trả lời: "Xin lỗi, tôi không có thông tin chi tiết về vấn đề này."
-
     **[HỘI THOẠI TRƯỚC]**
     {conversation_text}
 
