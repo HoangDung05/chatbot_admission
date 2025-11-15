@@ -1,0 +1,44 @@
+
+Điểm chuẩn ngành CNTT cơ sở HN năm 2025 theo các phương thức:
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả thi tốt nghiệp thpt năm 2025(thang 30): 25.8 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào hồ sơ năng lực(xét tuyển tài năng (thang100)): 81.375 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả Chứng chỉ đánh giá năng lực quốc tế (chứng chỉ SAT (thang 1600)) : 1377.5 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả Chứng chỉ đánh giá năng lực quốc tế (chứng chỉ ACT (thang 36)) : 30.825 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá tư duy ĐHBKHN(TSA) (thang 100) : 71.006 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá năng lực ĐHQGHN(HSA) (thang 150) : 99.2 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá năng lực ĐHSPHN(SPT) (thang 30) : 23.3688 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả xét tuyển kết hợp (thang 30) : 28.025 điểm.
+
+Điểm chuẩn ngành CNTT cơ sở HCM năm 2025 theo các phương thức:
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả thi tốt nghiệp thpt năm 2025(thang 30): 23.47 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào hồ sơ năng lực(xét tuyển tài năng (thang100)): 42.5 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả Chứng chỉ đánh giá năng lực quốc tế (chứng chỉ SAT (thang 1600)) : 1248.8 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả Chứng chỉ đánh giá năng lực quốc tế (chứng chỉ ACT (thang 36)) :  27.97 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá tư duy ĐHBKHN(TSA) (thang 100) : 65.36 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá năng lực ĐHQGHN(HSA) (thang 150) : 90.91 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá năng lực ĐHSPHN(SPT) (thang 30) : 20.47 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả xét tuyển kết hợp (thang 30) : 26.48 điểm
+    
+
+Điểm chuẩn ngành CNTT cơ sở HN năm 2024 theo các phương thức:
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả thi tốt nghiệp thpt năm 2025(thang 30): 26.4 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào hồ sơ năng lực(xét tuyển tài năng (thang100)): 82.85 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá năng lực/đánh giá tư duy (thang 30) : 22.55 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả xét tuyển kết hợp (thang 30) : 27.01 điểm.
+
+Điểm chuẩn ngành CNTT cơ sở HCM năm 2024 theo các phương thức:
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả thi tốt nghiệp thpt năm 2025(thang 30): 25.17 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào hồ sơ năng lực(xét tuyển tài năng (thang100)): 68.83 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá năng lực/đánh giá tư duy (thang 30) : 18.1 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả xét tuyển kết hợp (thang 30) : 22.2 điểm.
+
+
+Điểm chuẩn ngành CNTT cơ sở HN năm 2023 theo các phương thức:
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả thi tốt nghiệp thpt năm 2025(thang 30): 26.59 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá năng lực/đánh giá tư duy (thang 30) : 20.05 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả xét tuyển kết hợp (thang 30) : 28.03 điểm.
+
+Điểm chuẩn ngành CNTT cơ sở HCM năm 2023 theo các phương thức:
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả thi tốt nghiệp thpt năm 2025(thang 30): 25.1 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả kỳ thi đánh giá năng lực/đánh giá tư duy (thang 30) : 17.1 điểm.
+    -Điểm chuẩn theo phương thức xét tuyển dựa vào kết quả xét tuyển kết hợp (thang 30) : 22.82 điểm.

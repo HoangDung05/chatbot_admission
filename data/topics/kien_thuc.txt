@@ -1,0 +1,20 @@
+Tổ chức kiểm tra trình độ tiếng Anh**
+    Sau khi nhập học, sinh viên PTIT sẽ được tổ chức kiểm tra trình độ tiếng Anh đầu vào. 
+    Với chuẩn đầu ra, sinh viên cần đạt TOEIC 450 điểm quốc tế trở lên hoặc chứng chỉ quốc tế tương đương đề có thể ra trường.
+
+
+Kiến thức được học 
+    Kiến thức đại cương: 
+        Khoa học xã hội và nhân văn: Lý luận chính trị (Chủ nghĩa Mác-Lênin, Tư tưởng Hồ Chí Minh), Pháp luật đại cương, Kinh tế chính trị, Lịch sử Đảng, Chủ nghĩa xã hội khoa học..
+        Toán và Khoa học cơ bản: Toán cao cấp (Giải tích, Đại số), Xác suất thống kê, Toán rời rạc, Vật lý.... 
+        Kỹ năng: Kỹ năng mềm , Phương pháp nghiên cứu khoa học. 
+    Kiến thức chuyên ngành
+        Lập trình và phát triển phần mềm:
+        Nhập môn lập trình, Lập trình với C++, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật. 
+        Phát triển ứng dụng Website. 
+        Giới thiệu Kỹ thuật phần mềm, Phân tích và thiết kế hệ thống thông tin, Đảm bảo chất lượng phần mềm,Lập trình Python.
+        Kiến trúc máy tính, Mạng máy tính, Cơ sở dữ liệu,...
+        Chuyên sâu (tùy chương trình):
+    Kỹ năng và ngoại ngữ
+        Kỹ năng: Kỹ năng mềm (tự chủ, trách nhiệm, làm việc nhóm), Kỹ năng nghề nghiệp (giải quyết vấn đề, tư duy logic). 
+    Ngoại ngữ: Tiếng Anh chuyên ngành và các kỹ năng giao tiếp quốc tế. 
