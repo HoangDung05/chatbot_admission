@@ -1,6 +1,15 @@
-from flask import Flask, render_template, request, jsonify
-from src.chatbot import get_rag_response  # <-- THAY ĐỔI QUAN TRỌNG Ở ĐÂY
+# -*- coding: utf-8 -*-
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
+from src.chatbot import get_rag_response, add_document_to_database
+from werkzeug.utils import secure_filename
 import os
+import sys
+
+# Thiết lập encoding UTF-8 cho Windows terminal
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 # --- Thiết lập Flask App ---
 # Chỉ định thư mục templates và static một cách tường minh
@@ -8,6 +17,33 @@ import os
 app = Flask(__name__,
             static_folder='static',
             template_folder='templates')
+
+# Thiết lập secret key cho session
+app.secret_key = 'your-secret-key-change-this-in-production'
+
+# Cấu hình upload file
+UPLOAD_FOLDER = os.path.join('data', 'topics')
+ALLOWED_EXTENSIONS = {'txt'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Giới hạn 16MB
+
+# Thông tin đăng nhập admin (cứng)
+ADMIN_EMAIL = 'admin@ptit.edu.vn'
+ADMIN_PASSWORD = 'admin123'
+
+def allowed_file(filename):
+    """Kiểm tra file có đúng định dạng không"""
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def login_required(f):
+    """Decorator để yêu cầu đăng nhập"""
+    from functools import wraps
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'admin_logged_in' not in session or not session['admin_logged_in']:
+            return redirect(url_for('admin_login'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 
 # --- Các Route (đường dẫn) của ứng dụng ---
@@ -39,6 +75,83 @@ def chat():
 
     # Trả về câu trả lời dưới dạng JSON để script.js có thể đọc được
     return jsonify({'response': bot_response})
+
+
+# --- Admin Routes ---
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    """Trang đăng nhập admin"""
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        
+        if email == ADMIN_EMAIL and password == ADMIN_PASSWORD:
+            session['admin_logged_in'] = True
+            session['admin_email'] = email
+            flash('Đăng nhập thành công!', 'success')
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash('Email hoặc mật khẩu không đúng!', 'error')
+    
+    return render_template('login.html')
+
+
+@app.route('/admin/logout')
+def admin_logout():
+    """Đăng xuất admin"""
+    session.pop('admin_logged_in', None)
+    session.pop('admin_email', None)
+    flash('Đã đăng xuất thành công!', 'success')
+    return redirect(url_for('admin_login'))
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+@login_required
+def admin_dashboard():
+    """Trang quản lý admin - upload file txt"""
+    if request.method == 'POST':
+        # Kiểm tra xem có file được upload không
+        if 'file' not in request.files:
+            flash('Không có file được chọn!', 'error')
+            return redirect(request.url)
+        
+        file = request.files['file']
+        
+        # Nếu người dùng không chọn file
+        if file.filename == '':
+            flash('Không có file được chọn!', 'error')
+            return redirect(request.url)
+        
+        # Kiểm tra file hợp lệ
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            
+            # Đảm bảo thư mục upload tồn tại
+            os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+            
+            # Lưu file
+            filepath = os.path.join(UPLOAD_FOLDER, filename)
+            file.save(filepath)
+            
+            try:
+                # Thêm file vào database
+                result = add_document_to_database(filepath, filename)
+                if result['success']:
+                    flash(f'Đã thêm file "{filename}" vào database thành công! ({result["chunks"]} đoạn văn)', 'success')
+                else:
+                    flash(f'Lỗi khi thêm file vào database: {result["error"]}', 'error')
+            except Exception as e:
+                flash(f'Lỗi: {str(e)}', 'error')
+        else:
+            flash('File không hợp lệ! Chỉ chấp nhận file .txt', 'error')
+    
+    # Lấy danh sách file đã upload
+    uploaded_files = []
+    if os.path.exists(UPLOAD_FOLDER):
+        uploaded_files = [f for f in os.listdir(UPLOAD_FOLDER) if f.endswith('.txt')]
+    
+    return render_template('admin.html', files=uploaded_files)
 
 
 # --- Chạy ứng dụng ---

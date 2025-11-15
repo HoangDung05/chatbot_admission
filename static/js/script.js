@@ -50,8 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
         appendMessage(userText, 'user-message');
         chatInput.value = ''; // Xóa nội dung trong ô input
 
+        // 2. Hiển thị typing indicator (typing bubbles)
+        showTypingIndicator();
+
         try {
-            // 2. Gửi tin nhắn của người dùng đến server backend
+            // 3. Gửi tin nhắn của người dùng đến server backend
             const response = await fetch('/chat', {
                 method: 'POST',
                 headers: {
@@ -68,12 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await response.json();
             const botResponse = data.response; // Lấy câu trả lời từ JSON
 
-            // 3. Hiển thị tin nhắn trả về từ bot
+            // 4. Ẩn typing indicator và hiển thị tin nhắn trả về từ bot
+            hideTypingIndicator();
             appendMessage(botResponse, 'bot-message');
 
         } catch (error) {
             console.error('Đã có lỗi xảy ra khi gọi API:', error);
-            // Hiển thị một tin nhắn lỗi thân thiện trên giao diện
+            // Ẩn typing indicator và hiển thị một tin nhắn lỗi thân thiện trên giao diện
+            hideTypingIndicator();
             appendMessage('Xin lỗi, tôi đang gặp sự cố. Vui lòng thử lại sau.', 'bot-message');
         }
     }
@@ -88,12 +93,60 @@ document.addEventListener('DOMContentLoaded', function() {
         messageElement.className = className;
 
         const textNode = document.createElement('p');
-        textNode.innerHTML = text; // Dùng innerText để an toàn hơn, tránh lỗi XSS
+        textNode.innerHTML = text; // Dùng innerHTML để hiển thị HTML từ bot
 
         messageElement.appendChild(textNode);
         chatBody.appendChild(messageElement);
 
         // Tự động cuộn xuống tin nhắn mới nhất
         chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    /**
+     * Hàm để hiển thị typing indicator (typing bubbles)
+     */
+    function showTypingIndicator() {
+        // Kiểm tra xem đã có typing indicator chưa
+        let typingIndicator = document.getElementById('typing-indicator');
+        
+        if (!typingIndicator) {
+            // Tạo typing indicator nếu chưa có
+            typingIndicator = document.createElement('div');
+            typingIndicator.id = 'typing-indicator';
+            typingIndicator.className = 'typing-indicator';
+            
+            const bubblesContainer = document.createElement('div');
+            bubblesContainer.className = 'typing-bubbles';
+            
+            // Tạo 3 bubbles
+            for (let i = 0; i < 3; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'typing-bubble';
+                bubblesContainer.appendChild(bubble);
+            }
+            
+            typingIndicator.appendChild(bubblesContainer);
+            chatBody.appendChild(typingIndicator);
+        } else {
+            // Nếu đã tồn tại, chỉ cần hiển thị lại
+            typingIndicator.classList.remove('hidden');
+            // Đảm bảo nó ở cuối chat body
+            if (typingIndicator.parentNode !== chatBody) {
+                chatBody.appendChild(typingIndicator);
+            }
+        }
+        
+        // Tự động cuộn xuống typing indicator
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    /**
+     * Hàm để ẩn typing indicator
+     */
+    function hideTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.classList.add('hidden');
+        }
     }
 });

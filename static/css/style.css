@@ -67,6 +67,13 @@ ul {
   color: var(--primary-color);
 }
 
+/* --- Header Buttons --- */
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 /* --- Các nút bấm --- */
 .btn {
   padding: 10px 15px;
@@ -258,4 +265,85 @@ ul {
   margin-left: 10px;
   cursor: pointer;
   font-size: 16px;
+}
+
+/* --- Typing Indicator (Typing Bubbles) --- */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #b4e0f5;
+  border-radius: 15px;
+  max-width: 80px;
+  align-self: flex-start;
+  margin-bottom: 10px;
+}
+
+.typing-indicator.hidden {
+  display: none;
+}
+
+.typing-bubbles {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.typing-bubble {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #666;
+  animation: typing-bounce 1.4s infinite ease-in-out;
+}
+
+.typing-bubble:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-bubble:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.typing-bubble:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .main-header .container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+  }
+
+  .main-nav ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .header-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .header-buttons .btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
 }

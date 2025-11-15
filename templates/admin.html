@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Admin - PTIT Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-header-content">
+                <h1><i class="fas fa-cog"></i> Quản lý Admin</h1>
+                <div class="admin-header-actions">
+                    <span class="admin-email">{{ session.get('admin_email', 'Admin') }}</span>
+                    <a href="{{ url_for('admin_logout') }}" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}">
+                            <i class="fas fa-{% if category == 'success' %}check-circle{% else %}exclamation-circle{% endif %}"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Upload Section -->
+            <section class="admin-section">
+                <h2><i class="fas fa-upload"></i> Thêm dữ liệu mới</h2>
+                <div class="upload-box">
+                    <form method="POST" enctype="multipart/form-data" class="upload-form">
+                        <div class="form-group">
+                            <label for="file" class="file-label">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Chọn file .txt</span>
+                            </label>
+                            <input 
+                                type="file" 
+                                id="file" 
+                                name="file" 
+                                accept=".txt"
+                                required
+                                class="file-input"
+                            >
+                            <div class="file-info" id="file-info">Chưa chọn file</div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-cloud-upload-alt"></i> Tải lên và thêm vào database
+                        </button>
+                    </form>
+                    
+                    <div class="upload-info">
+                        <p><i class="fas fa-info-circle"></i> <strong>Lưu ý:</strong></p>
+                        <ul>
+                            <li>Chỉ chấp nhận file định dạng .txt</li>
+                            <li>File sẽ được chia thành các đoạn văn nhỏ (800 ký tự/đoạn)</li>
+                            <li>Nội dung sẽ được thêm vào cơ sở dữ liệu vector của chatbot</li>
+                            <li>File đã tồn tại sẽ được cập nhật (tránh trùng lặp)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Files List Section -->
+            <section class="admin-section">
+                <h2><i class="fas fa-folder-open"></i> Danh sách file đã tải lên</h2>
+                <div class="files-list">
+                    {% if files %}
+                        <div class="files-grid">
+                            {% for file in files %}
+                                <div class="file-item">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span class="file-name">{{ file }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <p class="files-count">Tổng cộng: <strong>{{ files|length }}</strong> file</p>
+                    {% else %}
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <p>Chưa có file nào được tải lên</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+
+            <!-- Back to Home -->
+            <div class="admin-footer">
+                <a href="{{ url_for('index') }}" class="back-link">
+                    <i class="fas fa-home"></i> Quay lại trang chủ
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Hiển thị tên file khi chọn
+        document.getElementById('file').addEventListener('change', function(e) {
+            const fileInfo = document.getElementById('file-info');
+            if (e.target.files.length > 0) {
+                fileInfo.textContent = 'Đã chọn: ' + e.target.files[0].name;
+                fileInfo.classList.add('has-file');
+            } else {
+                fileInfo.textContent = 'Chưa chọn file';
+                fileInfo.classList.remove('has-file');
+            }
+        });
+
+        // Auto-hide flash messages after 5 seconds
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(msg) {
+                msg.style.opacity = '0';
+                setTimeout(function() {
+                    msg.remove();
+                }, 300);
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
+

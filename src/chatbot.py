@@ -34,6 +34,69 @@ print("✅ Chatbot đã sẵn sàng!")
 # --- Bộ nhớ hội thoại (conversation memory) ---
 conversation_history = []  # Lưu danh sách [{role, content}, ...]
 
+
+# --- Hàm thêm document vào database ---
+def add_document_to_database(filepath: str, filename: str) -> dict:
+    """
+    Thêm một file txt vào ChromaDB collection.
+    
+    Args:
+        filepath: Đường dẫn đến file txt
+        filename: Tên file (không có extension)
+    
+    Returns:
+        dict: {'success': bool, 'chunks': int, 'error': str (nếu có)}
+    """
+    try:
+        # Đọc nội dung file
+        with open(filepath, 'r', encoding='utf-8') as f:
+            text = f.read().strip()
+        
+        if not text:
+            return {'success': False, 'chunks': 0, 'error': 'File rỗng'}
+        
+        # Lấy tên file không có extension
+        file_name = os.path.splitext(filename)[0]
+        
+        # Chia nội dung thành các đoạn nhỏ (chunk) - mỗi 800 ký tự
+        chunks = [text[i:i+800] for i in range(0, len(text), 800)]
+        
+        # Chuẩn bị dữ liệu để thêm vào collection
+        documents = []
+        metadatas = []
+        ids = []
+        
+        # Kiểm tra xem file đã tồn tại chưa để tránh trùng lặp
+        existing_ids = set()
+        try:
+            existing = collection.get(where={'file': file_name})
+            if existing and existing['ids']:
+                existing_ids = set(existing['ids'])
+        except:
+            pass
+        
+        # Tạo ID và metadata cho mỗi chunk
+        for i, chunk in enumerate(chunks, start=1):
+            chunk_id = f'{file_name}_chunk_{i}'
+            
+            # Bỏ qua nếu chunk đã tồn tại
+            if chunk_id in existing_ids:
+                continue
+            
+            documents.append(chunk)
+            metadatas.append({'file': file_name, 'segment': f'phần_{i}'})
+            ids.append(chunk_id)
+        
+        # Thêm vào collection nếu có chunk mới
+        if documents:
+            collection.add(documents=documents, metadatas=metadatas, ids=ids)
+            return {'success': True, 'chunks': len(documents), 'error': None}
+        else:
+            return {'success': True, 'chunks': 0, 'error': 'Tất cả chunks đã tồn tại trong database'}
+    
+    except Exception as e:
+        return {'success': False, 'chunks': 0, 'error': str(e)}
+
 # --- Hàm xử lý chính của Chatbot ---
 def get_rag_response(question: str) -> str:
     """
@@ -94,15 +157,14 @@ def get_rag_response(question: str) -> str:
         # 1. Lấy văn bản thô từ Gemini
         raw_text = response.text.strip()
         # 2. Dọn dẹp các dấu ```html và ``` ở đầu và cuối chuỗi
-        cleaned_text = re.sub(r"^```html\s*|\s*```$", "", raw_text, flags=re.MULTILINE).strip()
         cleaned_text = raw_text.strip()
         if cleaned_text.startswith("```html"):
             cleaned_text = cleaned_text[7:]   # Bỏ 7 ký tự '```html'
         if cleaned_text.endswith("```"):
-            cleaned_text = cleaned_text[:-3]  ## Bỏ 3 ký tự '```'
+            cleaned_text = cleaned_text[:-3]  # Bỏ 3 ký tự '```'
         
         # 3. Trả về văn bản đã được làm sạch
-        cleaned_text.strip()
+        cleaned_text = cleaned_text.strip()
 
         # Lưu câu hỏi và câu trả lời vào bộ nhớ hội thoại
         conversation_history.append({"role": "user", "content": question})
