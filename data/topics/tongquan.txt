@@ -1,0 +1,14 @@
+Ngành Công nghệ thông tin (gồm có 3 chuyên ngành Mạng máy tính và truyền thông dữ liệu, Công nghệ phần mềm, Hệ thống thông tin, không xét tuyển theo chuyên ngành, khi vào học sinh viên tự chọn chuyên ngành)
+1. Mã ngành: 7480201
+2. Khối lượng chương trình: 150 tín chỉ (không bao gồm Giáo dục thể chất, Giáo dục quốc phòng và Kỹ năng mềm)
+3. Chi tiêu:
+- Năm 2024: 600
+- Năm 2023: 730
+- Năm 2022: 840
+- Năm 2021: 770
+4. Điểm trúng tuyển:
+- Năm 2024: 26,40
+- Năm 2023: 26,59
+- Năm 2022: 27,25
+- Năm 2021: 26,90
+5. Tổ hợp xét tuyển: Toán – Lý – Hóa (A00) hoặc Toán – Lý – Anh (A01)
