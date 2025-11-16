@@ -299,6 +299,7 @@
   gap: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
 }
 
 .file-item:hover {
@@ -315,6 +316,37 @@
   color: #333;
   font-size: 0.95rem;
   word-break: break-word;
+  flex: 1;
+}
+
+.btn-delete-file {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+}
+
+.btn-delete-file:hover {
+  background: #c82333;
+  transform: scale(1.05);
+}
+
+.btn-delete-file:active {
+  transform: scale(0.95);
+}
+
+.btn-delete-file i {
+  color: white;
+  font-size: 0.9rem;
 }
 
 .files-count {
@@ -385,5 +417,6 @@
     padding: 20px;
   }
 }
+
 
 

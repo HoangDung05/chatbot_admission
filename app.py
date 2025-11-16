@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
-from src.chatbot import get_rag_response, add_document_to_database
+from src.chatbot import get_rag_response, add_document_to_database, delete_document_from_database
 from werkzeug.utils import secure_filename
 import os
 import sys
@@ -152,6 +152,37 @@ def admin_dashboard():
         uploaded_files = [f for f in os.listdir(UPLOAD_FOLDER) if f.endswith('.txt')]
     
     return render_template('admin.html', files=uploaded_files)
+
+
+@app.route('/admin/delete/<filename>', methods=['POST'])
+@login_required
+def admin_delete_file(filename):
+    """Xóa file txt và dữ liệu liên quan trong database"""
+    try:
+        # Kiểm tra file có tồn tại không
+        filepath = os.path.join(UPLOAD_FOLDER, filename)
+        
+        if not os.path.exists(filepath):
+            flash(f'File "{filename}" không tồn tại!', 'error')
+            return redirect(url_for('admin_dashboard'))
+        
+        # Xóa dữ liệu từ ChromaDB
+        result = delete_document_from_database(filename)
+        
+        # Xóa file từ hệ thống
+        try:
+            os.remove(filepath)
+            if result['success']:
+                flash(f'Đã xóa file "{filename}" và {result["deleted_chunks"]} đoạn văn từ database thành công!', 'success')
+            else:
+                flash(f'Đã xóa file "{filename}" nhưng có lỗi khi xóa dữ liệu trong database: {result.get("error", "Unknown error")}', 'error')
+        except Exception as e:
+            flash(f'Lỗi khi xóa file: {str(e)}', 'error')
+            
+    except Exception as e:
+        flash(f'Lỗi: {str(e)}', 'error')
+    
+    return redirect(url_for('admin_dashboard'))
 
 
 # --- Chạy ứng dụng ---

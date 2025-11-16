@@ -106,35 +106,26 @@ document.addEventListener('DOMContentLoaded', function() {
      * Hàm để hiển thị typing indicator (typing bubbles)
      */
     function showTypingIndicator() {
-        // Kiểm tra xem đã có typing indicator chưa
-        let typingIndicator = document.getElementById('typing-indicator');
+        // Xóa typing indicator cũ nếu có (để tránh duplicate)
+        hideTypingIndicator();
         
-        if (!typingIndicator) {
-            // Tạo typing indicator nếu chưa có
-            typingIndicator = document.createElement('div');
-            typingIndicator.id = 'typing-indicator';
-            typingIndicator.className = 'typing-indicator';
-            
-            const bubblesContainer = document.createElement('div');
-            bubblesContainer.className = 'typing-bubbles';
-            
-            // Tạo 3 bubbles
-            for (let i = 0; i < 3; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'typing-bubble';
-                bubblesContainer.appendChild(bubble);
-            }
-            
-            typingIndicator.appendChild(bubblesContainer);
-            chatBody.appendChild(typingIndicator);
-        } else {
-            // Nếu đã tồn tại, chỉ cần hiển thị lại
-            typingIndicator.classList.remove('hidden');
-            // Đảm bảo nó ở cuối chat body
-            if (typingIndicator.parentNode !== chatBody) {
-                chatBody.appendChild(typingIndicator);
-            }
+        // Tạo typing indicator mới
+        const typingIndicator = document.createElement('div');
+        typingIndicator.id = 'typing-indicator';
+        typingIndicator.className = 'typing-indicator';
+        
+        const bubblesContainer = document.createElement('div');
+        bubblesContainer.className = 'typing-bubbles';
+        
+        // Tạo 3 bubbles
+        for (let i = 0; i < 3; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'typing-bubble';
+            bubblesContainer.appendChild(bubble);
         }
+        
+        typingIndicator.appendChild(bubblesContainer);
+        chatBody.appendChild(typingIndicator);
         
         // Tự động cuộn xuống typing indicator
         chatBody.scrollTop = chatBody.scrollHeight;
@@ -146,7 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function hideTypingIndicator() {
         const typingIndicator = document.getElementById('typing-indicator');
         if (typingIndicator) {
-            typingIndicator.classList.add('hidden');
+            // Xóa hoàn toàn khỏi DOM thay vì chỉ ẩn
+            typingIndicator.remove();
         }
     }
 });

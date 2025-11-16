@@ -69,8 +69,6 @@
                         <p><i class="fas fa-info-circle"></i> <strong>Lưu ý:</strong></p>
                         <ul>
                             <li>Chỉ chấp nhận file định dạng .txt</li>
-                            <li>File sẽ được chia thành các đoạn văn nhỏ (800 ký tự/đoạn)</li>
-                            <li>Nội dung sẽ được thêm vào cơ sở dữ liệu vector của chatbot</li>
                             <li>File đã tồn tại sẽ được cập nhật (tránh trùng lặp)</li>
                         </ul>
                     </div>
@@ -87,6 +85,13 @@
                                 <div class="file-item">
                                     <i class="fas fa-file-alt"></i>
                                     <span class="file-name">{{ file }}</span>
+                                    <button 
+                                        class="btn-delete-file" 
+                                        onclick="confirmDeleteFile('{{ file }}')"
+                                        title="Xóa file"
+                                    >
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
                                 </div>
                             {% endfor %}
                         </div>
@@ -132,8 +137,23 @@
                 }, 300);
             });
         }, 5000);
+
+        // Hàm xác nhận xóa file
+        function confirmDeleteFile(filename) {
+            if (confirm('Bạn có chắc chắn muốn xóa file "' + filename + '"?\n\nFile và tất cả dữ liệu liên quan trong database sẽ bị xóa vĩnh viễn!')) {
+                // Tạo form để gửi POST request
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/admin/delete/' + encodeURIComponent(filename);
+                
+                // Thêm CSRF token nếu cần (ở đây không cần vì đã có session)
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
     </script>
 </body>
 </html>
+
 
 

@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 import chromadb
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer, util
 import re
 
 # --- Khởi tạo & Tải các mô hình ---
@@ -34,16 +34,44 @@ print("✅ Chatbot đã sẵn sàng!")
 # --- Bộ nhớ hội thoại (conversation memory) ---
 conversation_history = []  # Lưu danh sách [{role, content}, ...]
 
+# --- HÀM TÓM TẮT (Summary) ---
+def summarize_text(text: str) -> str:
+    """Dùng Gemini để tóm tắt tài liệu dài"""
+    try:
+        if len(text) > 1000:
+            prompt = f"Tóm tắt ngắn gọn nội dung sau bằng tiếng Việt:\n{text}"
+            response = gemini_model.generate_content(prompt)
+            return response.text.strip()
+        else:
+            return text
+    except:
+        return text  # fallback: giữ nguyên nếu lỗi
+
+# --- HÀM RERANK ---
+def rerank_documents(question, docs, top_n=3):
+    """Sử dụng cosine similarity để sắp xếp lại độ liên quan"""
+    q_vec = embedding_model.encode(question, convert_to_tensor=True)
+    d_vecs = embedding_model.encode(docs, convert_to_tensor=True)
+    scores = util.cos_sim(q_vec, d_vecs)[0]  # tính độ tương đồn cosine giữa q_vec và d_vecs
+    sorted_indices = scores.argsort(descending=True)  # sắp xếp giảm dần
+    reranked = [docs[i] for i in sorted_indices[:top_n]]
+    return reranked
+
+# --- HÀM FUSION ---
+def fuse_documents(docs):
+    """Kết hợp các đoạn văn ngắn lại"""
+    return "\n---\n".join(docs)
+
 
 # --- Hàm thêm document vào database ---
 def add_document_to_database(filepath: str, filename: str) -> dict:
     """
     Thêm một file txt vào ChromaDB collection.
-    
+
     Args:
         filepath: Đường dẫn đến file txt
         filename: Tên file (không có extension)
-    
+
     Returns:
         dict: {'success': bool, 'chunks': int, 'error': str (nếu có)}
     """
@@ -51,21 +79,21 @@ def add_document_to_database(filepath: str, filename: str) -> dict:
         # Đọc nội dung file
         with open(filepath, 'r', encoding='utf-8') as f:
             text = f.read().strip()
-        
+
         if not text:
             return {'success': False, 'chunks': 0, 'error': 'File rỗng'}
-        
+
         # Lấy tên file không có extension
         file_name = os.path.splitext(filename)[0]
-        
+
         # Chia nội dung thành các đoạn nhỏ (chunk) - mỗi 800 ký tự
-        chunks = [text[i:i+800] for i in range(0, len(text), 800)]
-        
+        chunks = [text[i:i + 800] for i in range(0, len(text), 800)]
+
         # Chuẩn bị dữ liệu để thêm vào collection
         documents = []
         metadatas = []
         ids = []
-        
+
         # Kiểm tra xem file đã tồn tại chưa để tránh trùng lặp
         existing_ids = set()
         try:
@@ -74,28 +102,64 @@ def add_document_to_database(filepath: str, filename: str) -> dict:
                 existing_ids = set(existing['ids'])
         except:
             pass
-        
+
         # Tạo ID và metadata cho mỗi chunk
         for i, chunk in enumerate(chunks, start=1):
             chunk_id = f'{file_name}_chunk_{i}'
-            
+
             # Bỏ qua nếu chunk đã tồn tại
             if chunk_id in existing_ids:
                 continue
-            
+
             documents.append(chunk)
             metadatas.append({'file': file_name, 'segment': f'phần_{i}'})
             ids.append(chunk_id)
-        
+
         # Thêm vào collection nếu có chunk mới
         if documents:
             collection.add(documents=documents, metadatas=metadatas, ids=ids)
             return {'success': True, 'chunks': len(documents), 'error': None}
         else:
             return {'success': True, 'chunks': 0, 'error': 'Tất cả chunks đã tồn tại trong database'}
-    
+
     except Exception as e:
         return {'success': False, 'chunks': 0, 'error': str(e)}
+
+
+# --- Hàm xóa document khỏi database ---
+def delete_document_from_database(filename: str) -> dict:
+    """
+    Xóa một file txt và tất cả chunks liên quan khỏi ChromaDB collection.
+    
+    Args:
+        filename: Tên file (có thể có hoặc không có extension)
+    
+    Returns:
+        dict: {'success': bool, 'deleted_chunks': int, 'error': str (nếu có)}
+    """
+    try:
+        # Lấy tên file không có extension
+        file_name = os.path.splitext(filename)[0]
+        
+        # Tìm tất cả documents có metadata file = file_name
+        try:
+            # Lấy tất cả documents với file name này
+            results = collection.get(where={'file': file_name})
+            
+            if results and results['ids']:
+                # Xóa tất cả chunks của file này
+                collection.delete(ids=results['ids'])
+                deleted_count = len(results['ids'])
+                return {'success': True, 'deleted_chunks': deleted_count, 'error': None}
+            else:
+                return {'success': True, 'deleted_chunks': 0, 'error': 'Không tìm thấy dữ liệu trong database'}
+        
+        except Exception as e:
+            # Nếu không tìm thấy hoặc có lỗi, vẫn trả về success nhưng với số lượng 0
+            return {'success': True, 'deleted_chunks': 0, 'error': f'Không tìm thấy dữ liệu: {str(e)}'}
+    
+    except Exception as e:
+        return {'success': False, 'deleted_chunks': 0, 'error': str(e)}
 
 # --- Hàm xử lý chính của Chatbot ---
 def get_rag_response(question: str) -> str:
@@ -107,7 +171,7 @@ def get_rag_response(question: str) -> str:
     # Tạo vector cho câu hỏi và truy vấn ChromaDB để lấy ngữ cảnh
     results = collection.query(
         query_texts=[question],
-        n_results=3
+        n_results=5
     )
 
     context_documents = results['documents'][0]
@@ -115,7 +179,14 @@ def get_rag_response(question: str) -> str:
         print("Không tìm thấy thông tin liên quan trong cơ sở dữ liệu.")
         return "Xin lỗi, tôi không có thông tin về vấn đề này. Bạn có thể hỏi câu khác không?"
 
-    context = "\n\n".join(context_documents)
+    # --rerank--
+    reranked_docs = rerank_documents(question, context_documents, top_n=5)
+    # --sumarize--
+    summarized_docs = [summarize_text(doc) for doc in reranked_docs]
+    # --fusion--
+    fused_context = fuse_documents(summarized_docs)
+
+    context = fused_context
     print(f"Ngữ cảnh tìm được:\n---\n{context}\n---")
 
     # Gộp hội thoại trước vào prompt
@@ -158,11 +229,8 @@ def get_rag_response(question: str) -> str:
         raw_text = response.text.strip()
         # 2. Dọn dẹp các dấu ```html và ``` ở đầu và cuối chuỗi
         cleaned_text = raw_text.strip()
-        if cleaned_text.startswith("```html"):
-            cleaned_text = cleaned_text[7:]   # Bỏ 7 ký tự '```html'
-        if cleaned_text.endswith("```"):
-            cleaned_text = cleaned_text[:-3]  # Bỏ 3 ký tự '```'
-        
+        cleaned_text = re.sub(r"^```html\s*|\s*```$", "", raw_text, flags=re.MULTILINE).strip()
+
         # 3. Trả về văn bản đã được làm sạch
         cleaned_text = cleaned_text.strip()
 
@@ -172,7 +240,7 @@ def get_rag_response(question: str) -> str:
 
         # Trả kết quả
         return cleaned_text
-    
+
     except Exception as e:
         print(f"Lỗi khi gọi Gemini API: {e}")
         return "Xin lỗi, đã có lỗi xảy ra trong quá trình xử lý. Vui lòng thử lại sau."
