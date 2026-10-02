@@ -53,7 +53,7 @@ def build_database():
             text = f.read().strip()
 
         # --- Chia nội dung file thành các đoạn nhỏ (chunk) ---
-        chunks = [text[i:i+800] for i in range(0, len(text), 800)]  # mỗi 800 ký tự là 1 đoạn
+        chunks = [text[i:i+600] for i in range(0, len(text), 600)]  # mỗi 600 ký tự là 1 đoạn
 
         for i, chunk in enumerate(chunks, start=1):
             documents.append(chunk)
