@@ -1,9 +1,7 @@
 flask
-google-generativeai
 chromadb
 sentence-transformers
 python-dotenv
-langchain-google-genai
 langchain-community
 langchain
 tiktoken

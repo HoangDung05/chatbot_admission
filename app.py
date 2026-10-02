@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
-from src.chatbot import get_rag_response, add_document_to_database, delete_document_from_database
 from werkzeug.utils import secure_filename
 import os
 import sys
@@ -10,6 +9,8 @@ if sys.platform == 'win32':
     import io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+
+from src.chatbot import get_rag_response, add_document_to_database, delete_document_from_database
 
 # --- Thiết lập Flask App ---
 # Chỉ định thư mục templates và static một cách tường minh

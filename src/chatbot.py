@@ -1,24 +1,52 @@
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
+import json
+from urllib.error import HTTPError
+from urllib.request import Request, urlopen
 import chromadb
 from sentence_transformers import SentenceTransformer, util
 import re
 
 # --- Khởi tạo & Tải các mô hình ---
-load_dotenv()
+load_dotenv(override=True)
+load_dotenv('.env.local', override=True)
 
 # --- Các hằng số ---
 DB_PATH = "data"
 COLLECTION_NAME = "ptit_chatbot_rag"
 EMBEDDING_MODEL = "bkai-foundation-models/vietnamese-bi-encoder"
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+GEMINI_MODEL = os.getenv('GEMINI_MODEL', 'gemini-3.5-flash-lite')
 
 print("Đang khởi tạo bộ não của Chatbot...")
 
-# Cấu hình Gemini API
-genai.configure(api_key=GEMINI_API_KEY)
-gemini_model = genai.GenerativeModel('gemini-2.5-flash')
+if not GEMINI_API_KEY:
+    raise RuntimeError('Thiếu GEMINI_API_KEY trong file .env.local')
+
+
+def generate_text(prompt: str) -> str:
+    payload = json.dumps({
+        'contents': [{'parts': [{'text': prompt}]}],
+    }).encode('utf-8')
+    request = Request(
+        f'https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent',
+        data=payload,
+        headers={
+            'x-goog-api-key': GEMINI_API_KEY,
+            'Content-Type': 'application/json',
+        },
+        method='POST',
+    )
+    with urlopen(request, timeout=60) as response:
+        result = json.load(response)
+    output = ''.join(
+        content.get('text', '')
+        for candidate in result.get('candidates', [])[:1]
+        for content in candidate.get('content', {}).get('parts', [])
+    ).strip()
+    if not output:
+        raise RuntimeError('Gemini không trả về nội dung văn bản')
+    return output
 
 # Tải mô hình embedding (chỉ một lần)
 print(f"Đang tải mô hình embedding: {EMBEDDING_MODEL}...")
@@ -40,8 +68,7 @@ def summarize_text(text: str) -> str:
     try:
         if len(text) > 1000:
             prompt = f"Tóm tắt ngắn gọn nội dung sau bằng tiếng Việt:\n{text}"
-            response = gemini_model.generate_content(prompt)
-            return response.text.strip()
+            return generate_text(prompt)
         else:
             return text
     except:
@@ -169,8 +196,9 @@ def get_rag_response(question: str) -> str:
     print(f"\nĐang tìm kiếm thông tin cho câu hỏi: '{question}'")
 
     # Tạo vector cho câu hỏi và truy vấn ChromaDB để lấy ngữ cảnh
+    question_embedding = embedding_model.encode(question).tolist()
     results = collection.query(
-        query_texts=[question],
+        query_embeddings=[question_embedding],
         n_results=5
     )
 
@@ -194,7 +222,7 @@ def get_rag_response(question: str) -> str:
     for turn in conversation_history[-3:]:  # chỉ lấy 3 lượt gần nhất
         conversation_text += f"{turn['role'].capitalize()}: {turn['content']}\n"
 
-    # Thiết kế Prompt cho Gemini
+    # Thiết kế prompt cho Gemini
     prompt_template = f"""
     Bạn là một trợ lý ảo tư vấn tuyển sinh chuyên nghiệp và thân thiện của Học viện Công nghệ Bưu chính Viễn thông (PTIT).
 
@@ -223,10 +251,10 @@ def get_rag_response(question: str) -> str:
     # --- Gọi Gemini API để sinh câu trả lời ---
     print("Đang gửi yêu cầu đến Gemini để tạo câu trả lời...")
     try:
-        response = gemini_model.generate_content(prompt_template)
+        raw_text = generate_text(prompt_template)
         print("Đã nhận phản hồi từ Gemini.")
         # 1. Lấy văn bản thô từ Gemini
-        raw_text = response.text.strip()
+        raw_text = raw_text.strip()
         # 2. Dọn dẹp các dấu ```html và ``` ở đầu và cuối chuỗi
         cleaned_text = raw_text.strip()
         cleaned_text = re.sub(r"^```html\s*|\s*```$", "", raw_text, flags=re.MULTILINE).strip()
@@ -241,6 +269,22 @@ def get_rag_response(question: str) -> str:
         # Trả kết quả
         return cleaned_text
 
+    except HTTPError as e:
+        try:
+            error = json.load(e).get('error', {})
+            error_status = error.get('status')
+            error_message = error.get('message', '')
+        except (ValueError, OSError):
+            error_status = None
+            error_message = ''
+        print(f"Lỗi Gemini API: HTTP {e.code}, status={error_status}")
+        if e.code == 403 and 'suspended' in error_message.lower():
+            return 'Khóa Gemini API đã bị đình chỉ. Vui lòng tạo khóa mới trong Google AI Studio.'
+        if e.code == 429:
+            return 'Gemini đã vượt giới hạn sử dụng. Vui lòng thử lại sau hoặc kiểm tra hạn mức API.'
+        if e.code in (400, 401, 403):
+            return 'Gemini từ chối yêu cầu. Vui lòng kiểm tra API key và quyền truy cập mô hình.'
+        return 'Xin lỗi, dịch vụ AI đang gặp lỗi. Vui lòng thử lại sau.'
     except Exception as e:
         print(f"Lỗi khi gọi Gemini API: {e}")
         return "Xin lỗi, đã có lỗi xảy ra trong quá trình xử lý. Vui lòng thử lại sau."
