@@ -54,3 +54,4 @@ Mở <http://127.0.0.1:5000> để chat. Trang quản lý tài liệu ở <http:
 - Console trình duyệt báo `Unchecked runtime.lastError`: thường là lỗi nhắn tin của tiện ích Chrome. Kiểm tra yêu cầu `/chat` trong tab Network và thử tắt tiện ích liên quan; lỗi của ứng dụng sẽ xuất hiện trong terminal chạy Flask.
 
 `app.py` hiện chạy ở chế độ debug để phát triển cục bộ. Hãy thay cấu hình debug và thông tin đăng nhập quản trị trước khi đưa ứng dụng lên môi trường công khai.
+fix
