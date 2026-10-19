@@ -18,7 +18,14 @@ if (-not (Test-Path .env.local)) { Copy-Item .env.example .env.local }
 notepad .env.local
 ```
 
-Trong `.env.local`, thay `replace_with_your_gemini_api_key` bằng khóa của bạn. Giữ tên biến `GEMINI_API_KEY`. `GEMINI_MODEL` mặc định là `gemini-3.5-flash-lite`; bạn có thể đổi sang một mô hình được dự án Gemini của mình hỗ trợ. File này được Git bỏ qua, không đưa khóa vào mã nguồn.
+Trong `.env.local`, điền `GEMINI_API_KEY`, `ADMIN_EMAIL`, `FLASK_SECRET_KEY` và `ADMIN_PASSWORD_HASH` của riêng bạn. Không dùng lại tài khoản quản trị hoặc khóa phiên từng có trong Git; không commit file này. Tạo một khóa phiên và hash mật khẩu mới bằng các lệnh sau, rồi sao chép kết quả vào `.env.local`:
+
+```powershell
+.\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_hex(32))"
+.\.venv\Scripts\python.exe -c "from getpass import getpass; from werkzeug.security import generate_password_hash; print(generate_password_hash(getpass('New admin password: ')))"
+```
+
+`APP_ENV=development` mặc định cho phép cookie trên HTTP localhost; chế độ này vẫn tắt debug và chỉ lắng nghe `127.0.0.1`. Chỉ bật debug cục bộ khi cần bằng `FLASK_DEBUG=1`. Khi triển khai sau này, đặt `APP_ENV=production` để bật cookie `Secure`, dùng HTTPS và máy chủ WSGI phù hợp. `GEMINI_MODEL` có thể đổi sang mô hình mà dự án Gemini của bạn hỗ trợ.
 
 Ở lần chạy đầu trên bản sao mới, tạo cơ sở dữ liệu vector từ các file trong `data/topics/`:
 
@@ -48,10 +55,9 @@ Mở <http://127.0.0.1:5000> để chat. Trang quản lý tài liệu ở <http:
 
 ## Khi gặp lỗi
 
-- `Thiếu GEMINI_API_KEY`: kiểm tra `.env.local` nằm cạnh `app.py` và có khóa hợp lệ.
+- Thiếu cấu hình bảo mật hoặc `GEMINI_API_KEY`: kiểm tra `.env.local` nằm cạnh `app.py` và tất cả giá trị bắt buộc đã được điền.
 - Gemini báo `404` hoặc không có quyền truy cập mô hình: đổi `GEMINI_MODEL` trong `.env.local` sang mô hình mà dự án của bạn được phép sử dụng, rồi khởi động lại server.
 - Không tìm thấy collection ChromaDB: chạy `src/build_database.py` như hướng dẫn ở trên.
 - Console trình duyệt báo `Unchecked runtime.lastError`: thường là lỗi nhắn tin của tiện ích Chrome. Kiểm tra yêu cầu `/chat` trong tab Network và thử tắt tiện ích liên quan; lỗi của ứng dụng sẽ xuất hiện trong terminal chạy Flask.
 
-`app.py` hiện chạy ở chế độ debug để phát triển cục bộ. Hãy thay cấu hình debug và thông tin đăng nhập quản trị trước khi đưa ứng dụng lên môi trường công khai.
-fix
+Không đưa server phát triển Flask lên Internet. Trang quản trị dùng CSRF token và cần đăng nhập bằng cấu hình riêng trong `.env.local`.

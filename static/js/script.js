@@ -92,8 +92,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const messageElement = document.createElement('div');
         messageElement.className = className;
 
-        const textNode = document.createElement('p');
-        textNode.innerHTML = text; // Dùng innerHTML để hiển thị HTML từ bot
+        const textNode = document.createElement(className === 'bot-message' ? 'div' : 'p');
+        if (className === 'bot-message' && window.DOMPurify) {
+            textNode.innerHTML = window.DOMPurify.sanitize(String(text), {
+                ALLOWED_TAGS: ['p', 'br', 'ul', 'ol', 'li', 'strong', 'em', 'b', 'i'],
+                ALLOWED_ATTR: []
+            });
+        } else {
+            // Người dùng là văn bản thuần; thiếu sanitizer thì bot cũng hiển thị an toàn.
+            textNode.textContent = String(text);
+        }
 
         messageElement.appendChild(textNode);
         chatBody.appendChild(messageElement);

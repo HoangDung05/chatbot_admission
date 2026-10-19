@@ -44,6 +44,7 @@
                 <h2><i class="fas fa-upload"></i> Thêm dữ liệu mới</h2>
                 <div class="upload-box">
                     <form method="POST" enctype="multipart/form-data" class="upload-form">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         <div class="form-group">
                             <label for="file" class="file-label">
                                 <i class="fas fa-file-alt"></i>
@@ -87,7 +88,7 @@
                                     <span class="file-name">{{ file }}</span>
                                     <button 
                                         class="btn-delete-file" 
-                                        onclick="confirmDeleteFile('{{ file }}')"
+                                        data-filename="{{ file }}"
                                         title="Xóa file"
                                     >
                                         <i class="fas fa-trash-alt"></i>
@@ -139,6 +140,12 @@
         }, 5000);
 
         // Hàm xác nhận xóa file
+        document.querySelectorAll('.btn-delete-file').forEach(function(button) {
+            button.addEventListener('click', function() {
+                confirmDeleteFile(button.dataset.filename);
+            });
+        });
+
         function confirmDeleteFile(filename) {
             if (confirm('Bạn có chắc chắn muốn xóa file "' + filename + '"?\n\nFile và tất cả dữ liệu liên quan trong database sẽ bị xóa vĩnh viễn!')) {
                 // Tạo form để gửi POST request
@@ -146,7 +153,11 @@
                 form.method = 'POST';
                 form.action = '/admin/delete/' + encodeURIComponent(filename);
                 
-                // Thêm CSRF token nếu cần (ở đây không cần vì đã có session)
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = 'csrf_token';
+                csrfInput.value = document.querySelector('.upload-form input[name="csrf_token"]').value;
+                form.appendChild(csrfInput);
                 document.body.appendChild(form);
                 form.submit();
             }

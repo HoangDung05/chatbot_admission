@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "test:security-js": "node --test tests/test_security_frontend.cjs"
+  },
+  "devDependencies": {
+    "dompurify": "3.4.17",
+    "jsdom": "29.0.1"
+  }
+}

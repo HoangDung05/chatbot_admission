@@ -2,3 +2,4 @@ flask
 chromadb
 sentence-transformers
 python-dotenv
+Flask-WTF

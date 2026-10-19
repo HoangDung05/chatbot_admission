@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
+from flask_wtf.csrf import CSRFProtect
+from dotenv import load_dotenv
+from werkzeug.security import check_password_hash
 from werkzeug.utils import secure_filename
 import os
 import sys
@@ -10,6 +13,28 @@ if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
+load_dotenv('.env', override=False)
+load_dotenv('.env.local', override=False)
+
+def required_security_setting(name):
+    value = os.getenv(name, '').strip()
+    if not value or value.startswith('replace_with_'):
+        raise RuntimeError(f'Thiếu cấu hình bảo mật {name} trong .env.local hoặc biến môi trường')
+    return value
+
+
+SECRET_KEY = required_security_setting('FLASK_SECRET_KEY')
+ADMIN_EMAIL = required_security_setting('ADMIN_EMAIL')
+ADMIN_PASSWORD_HASH = required_security_setting('ADMIN_PASSWORD_HASH')
+if len(SECRET_KEY) < 32:
+    raise RuntimeError('FLASK_SECRET_KEY phải có ít nhất 32 ký tự ngẫu nhiên')
+if not ADMIN_PASSWORD_HASH.startswith(('scrypt:', 'pbkdf2:')):
+    raise RuntimeError('ADMIN_PASSWORD_HASH phải là hash tạo bởi Werkzeug')
+
+APP_ENV = os.getenv('APP_ENV', 'development').strip().lower()
+if APP_ENV not in ('development', 'production'):
+    raise RuntimeError('APP_ENV phải là development hoặc production')
+
 from src.chatbot import get_rag_response, add_document_to_database, delete_document_from_database
 
 # --- Thiết lập Flask App ---
@@ -19,18 +44,19 @@ app = Flask(__name__,
             static_folder='static',
             template_folder='templates')
 
-# Thiết lập secret key cho session
-app.secret_key = 'your-secret-key-change-this-in-production'
+app.secret_key = SECRET_KEY
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE='Lax',
+    SESSION_COOKIE_SECURE=(APP_ENV == 'production'),
+)
+csrf = CSRFProtect(app)
 
 # Cấu hình upload file
 UPLOAD_FOLDER = os.path.join('data', 'topics')
 ALLOWED_EXTENSIONS = {'txt'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Giới hạn 16MB
-
-# Thông tin đăng nhập admin (cứng)
-ADMIN_EMAIL = 'admin@ptit.edu.vn'
-ADMIN_PASSWORD = 'admin123'
 
 def allowed_file(filename):
     """Kiểm tra file có đúng định dạng không"""
@@ -59,6 +85,7 @@ def index():
 
 
 @app.route('/chat', methods=['POST'])
+@csrf.exempt
 def chat():
     """
     API endpoint để nhận câu hỏi từ JavaScript và trả về câu trả lời từ bot.
@@ -87,7 +114,8 @@ def admin_login():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        if email == ADMIN_EMAIL and password == ADMIN_PASSWORD:
+        if email == ADMIN_EMAIL and password and check_password_hash(ADMIN_PASSWORD_HASH, password):
+            session.clear()
             session['admin_logged_in'] = True
             session['admin_email'] = email
             flash('Đăng nhập thành công!', 'success')
@@ -187,7 +215,11 @@ def admin_delete_file(filename):
 
 
 # --- Chạy ứng dụng ---
+def get_server_options():
+    host = os.getenv('FLASK_HOST', '127.0.0.1')
+    debug = APP_ENV == 'development' and host in ('127.0.0.1', 'localhost', '::1') and os.getenv('FLASK_DEBUG') == '1'
+    return {'host': host, 'port': 5000, 'debug': debug}
+
+
 if __name__ == '__main__':
-    # Chạy Flask app ở chế độ debug để dễ dàng theo dõi lỗi
-    # Host='0.0.0.0' cho phép truy cập từ các thiết bị khác trong cùng mạng
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(**get_server_options())
